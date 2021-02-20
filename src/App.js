@@ -3,6 +3,7 @@ import './App.css';
 import InfoBox from './component/InfoBox';
 import Grid from '@material-ui/core/Grid';
 import Fetch from './Fetch';
+import React, { useState, useEffect } from 'react';
 
 function App() {
   const boxes = [
@@ -41,6 +42,21 @@ function App() {
     },
   ]
 
+  const [articleData, setArticleData] = useState();
+
+  useEffect(() => {
+    // do whatever
+    clickHandler();
+  }, []);
+
+  const clickHandler = (e) => {
+    fetch("https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space")
+      .then((resp) => resp.json())
+      .then((data) => setArticleData(data));
+  };
+
+  console.log(articleData);
+
   const renderBox = (box, index) => {
     return(
       <InfoBox data={box} key={index}></InfoBox>
@@ -52,7 +68,9 @@ function App() {
           {boxes.map(renderBox)}
           <Fetch />
       </Grid>
-      
+      <button default onClick={clickHandler}>
+        Start over
+      </button>
     </div>
   );
 }
