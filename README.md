@@ -40,6 +40,8 @@ Confined Indorms, a 2020 Gameheads production
         <br />
         <sub>
           <b>Harry Zhu</b>
+          <br>
+          <p><a href="linkedin.com/in/harryjzhu">LinkedIn</a></p>
         </sub>
       </a>
       <br/>
@@ -49,6 +51,8 @@ Confined Indorms, a 2020 Gameheads production
       <br />
       <sub>
         <b>Abraham Wong</b>
+        <br>
+          <p><a href="linkedin.com/in/abraham-wong-wy">LinkedIn</a></p>
       </sub></a>
       <br/>
     </td>
@@ -57,6 +61,8 @@ Confined Indorms, a 2020 Gameheads production
         <img src="https://avatars.githubusercontent.com/u/17406948?s=460&u=f66d1c6ba22b18b60de9bf749a550a1d342f42a6&v=4" width="75px;" alt="Kristof"/><br />
         <sub>
           <b>Kristof Gazsco</b>
+          <br>
+          <p><a href="linkedin.com/in/kristofgazso">LinkedIn</a></p>
         </sub>
       </a>
       <br/>
@@ -66,6 +72,8 @@ Confined Indorms, a 2020 Gameheads production
        <br />
        <sub>
          <b>Rozan Mhrzn</b>
+         <br>
+          <p><a href="linkedin.com/in/rozan-mhrzn-203561180">LinkedIn</a></p>
        </sub>
        </a>
        <br/>
