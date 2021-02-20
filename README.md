@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <h3 align="center">Pickabox, a wiki organizer of a wiki</h3>
-  <h4 align="center"><a href="http://pickabox.space">Official Website: pickabox.space</a></h4>
+  <h4 align="center"><a href="http://pickabox.space" target="_blank">Official Website: pickabox.space</a></h4>
 
   <p align="center">
     Developed by HAcKeRs. Courtesy of SacHacks 2021.
