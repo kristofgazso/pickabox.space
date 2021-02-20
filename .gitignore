@@ -9,6 +9,11 @@ stats.json
 npm-debug.log
 .idea
 
+# environmental variables
 .env
 
+# Package lock file
 package-lock.json
+
+# Build folder
+/build
