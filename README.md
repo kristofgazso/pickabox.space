@@ -23,7 +23,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Confined Indorms, a 2020 Gameheads production
+Pickabox, an automatic organizer and random generator of wikis upon wikis, is a user-friendly web application where everyday Wikipedia users generate random wikipedia pages on our platform. It is truly the organizational tool to help you keep track of what you’re reading and learning.
 
 ### Built With
 * [Create-React-App](https://reactjs.org/docs/create-a-new-react-app.html)
