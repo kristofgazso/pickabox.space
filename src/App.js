@@ -59,6 +59,7 @@ function App() {
       link: "https://en.wikipedia.org/wiki/Python_(programming_language)"
     },
   ]
+  var currentTitle = 'Welcome, Now Pick A Box!';
 
   const renderBox = (box, index) => {
     return(
@@ -68,14 +69,34 @@ function App() {
   return (
     <div className="App">
       <Grid container spacing={3} justify="flex-end">
-          {articleData && articleData.map(renderBox)}
-          {/* <Fetch /> */}
+        <Grid item xs={12} sm={7} style={pageTitle}>{currentTitle}</Grid>
+        <Grid container item xs={12} sm={10} spacing={5} justify="flex-end">
+            {articleData && articleData.map(renderBox)}
+            {/* <Fetch /> */}
+        </Grid>
       </Grid>
       <button default onClick={clickHandler}>
         Start over
       </button>
     </div>
   );
+}
+
+const pageTitle={
+  fontFamily: 'Roboto',
+  fontStyle: 'normal',
+  fontWeight: 'bold',
+  fontSize: '48px',
+  lineHeight: '34px',
+  marginTop: '20px',
+  marginBottom: '20px',
+  /* or 71% */
+
+  display: 'flex',
+  alignItems: 'center',
+  textAlign: 'center',
+
+  color: '#000000'
 }
 
 export default App;
