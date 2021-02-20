@@ -30,7 +30,7 @@ Confined Indorms, a 2020 Gameheads production
 
 
 <!-- CONTACT -->
-### Contwct Us
+### Contact Us
 
 <table>
   <tr>
