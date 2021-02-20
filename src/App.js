@@ -8,7 +8,6 @@ function App() {
   
 
   const [articleData, setArticleData] = useState();
-
   useEffect(() => {
     // do whatever
     clickHandler();
@@ -19,14 +18,18 @@ function App() {
     // Using cors-anywhere proxy to scrape the data on wikipedia
     fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space")
       .then((resp) => resp.json())
-      .then((data) => setArticleData(data));
+      .then((data) => {
+        console.log(data, typeof data);
+        setArticleData(data.articles);
+        // boxes = articleData;
+      });
   };
 
   console.log(articleData);
 
-  const boxes = [
+  var boxes = [
     {
-      title: articleData,
+      title: 'Republic',
       text: 'A republic (Latin: res publica, meaning "public affair") is a form of government in which "power is held by the people and their elected representatives".[1] In republics, the country is considered a "public matter", not the private concern or property of the rulers. The primary positions of power within a republic are attained through democracy or a mix of democracy with oligarchy or autocracy rather than being unalterably occupied by any given family lineage or group. With modern republicanism, it has become the opposing form of government to a monarchy and therefore a modern republic has no monarch as head of state.',
       link: "https://en.wikipedia.org/wiki/Republic"
     },
@@ -65,7 +68,7 @@ function App() {
   return (
     <div className="App">
       <Grid container spacing={3} justify="flex-end">
-          {boxes.map(renderBox)}
+          {articleData && articleData.map(renderBox)}
           {/* <Fetch /> */}
       </Grid>
       <button default onClick={clickHandler}>
