@@ -8,8 +8,8 @@
     Developed by HAcKeRs. Courtesy of SacHacks 2021.
     <br>
     <br>
-    <a href="https://github.com/kristofgazso/pickabox.space/issues">Report Bug</a>
-    <a href="https://github.com/kristofgazso/pickabox.space/issues">Request Feature</a>
+  <li align="center"><a href="https://github.com/kristofgazso/pickabox.space/issues">Report Bug</a></li>
+  <li align="center"><a href="https://github.com/kristofgazso/pickabox.space/issues">Request Feature</a></li>
   </p>
 </p>
 
@@ -18,7 +18,7 @@
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
-* [HAcKeR Developers](#hacker-dev-team)
+* [Contact Us](#contact-us)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -30,7 +30,7 @@ Confined Indorms, a 2020 Gameheads production
 
 
 <!-- CONTACT -->
-### HAcKeR Development Team
+### Contwct Us
 
 <table>
   <tr>
