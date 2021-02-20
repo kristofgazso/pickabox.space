@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "axios-hooks": "^2.3.0",
+    "cors": "^2.8.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "install-peerdeps": "^3.0.3",
     "react": "^17.0.1",

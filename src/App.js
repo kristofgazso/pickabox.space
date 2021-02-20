@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import InfoBox from './component/InfoBox';
 import Grid from '@material-ui/core/Grid';
-import Fetch from './Fetch';
+// import Fetch from './Fetch';
 
 function App() {
   const boxes = [
