@@ -48,7 +48,7 @@ Confined Indorms, a 2020 Gameheads production
       <img src="https://avatars.githubusercontent.com/u/46876547?s=460&v=4" width="75px;" alt="Abraham"/>
       <br />
       <sub>
-        <b>Chun Tat Chan</b>
+        <b>Abraham Wong</b>
       </sub></a>
       <br/>
     </td>
