@@ -11,8 +11,8 @@ const InfoBox = (props) => {
   }
 
   return (
-    <Grid container item xs={12} sm={4}spacing={2}>
-      <Card style={{ width: '18rem' }} >
+    <Grid container item xs={12} sm={6} md={4} spacing={2}>
+      <Card >
         <Card.Img style={cardTitle} variant="top" src={props.data.image}/>
         <Card.Body style={cardBody}>
           <Card.Title>{props.data.title}</Card.Title>
@@ -29,7 +29,6 @@ const cardBody={
   color: 'black',
   position: 'relative',
   border: '.2rem solid #ececec',
-  minWidth: '250px',
   overflowY: 'scroll',
   maxHeight: '250px',
 }
