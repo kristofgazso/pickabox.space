@@ -15,6 +15,8 @@ function App() {
   }, []);
 
   const clickHandler = (e) => {
+
+    // Using cors-anywhere proxy to scrape the data on wikipedia
     fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space")
       .then((resp) => resp.json())
       .then((data) => setArticleData(data));
