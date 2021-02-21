@@ -57,7 +57,7 @@ export default function App() {
   useEffect(() => {
     const timeout2 = setTimeout(() => {
       setBlink((prev) => !prev);
-    }, 500);
+    }, 200);
     return () => clearTimeout(timeout2);
   }, [blink]);
     const clickHandler = (e) => {
