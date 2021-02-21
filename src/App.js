@@ -4,9 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import React, { useState, useEffect } from 'react';
 import logo from './image/boxIcon.png';
 import Button from 'react-bootstrap/Button';
-
-// import Modal from './component/Modal';
-
+import Modal from react-modal;
+import AboutModal from './component/AboutModal';
 import useLoader from './component/useLoader';
 
 
@@ -17,20 +16,37 @@ export default function App() {
   
   const [articleData, setArticleData] = useState();
 
-  // States telling words when to index, blink and reverse
+  // React Hooks
+
+  // Type writer Effects
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [blink, setBlink] = useState(true);
   const [reverse, setReverse] = useState(false);
+
+  // Subtitle
   const [subTitle, setSubTitles] = useState('');
   const [titleLink, setTitleLink] = useState('');
   const [titleId, setId] = useState('');
 
+  // Modal
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   // State showing whether reshuffle button exist or not
   const [reShuffle, setReshuffle] = useState(false);
+
   // Spinning screen for loading
   const [loader, showLoader, hideLoader] = useLoader();
   
+
+  // About Modal
+  const setAboutModalIsOpenToTrue = () => {
+    setModalIsOpen(true)
+  }
+
+  const setAboutModalIsOpenToFalse =()=>{
+    setModalIsOpen(false)
+}
 
   // Link Handler
   useEffect(() => {
@@ -139,11 +155,7 @@ export default function App() {
   //     show: true
   //   });
   // };
-  const reShuffleButton = () =>{
-    <Button variant="primary" size="lg" onClick={() => reDigHandler(titleId)} style={restartButton} className='restartButton'>
-      <h2 role="img" aria-label="reshuffle"></h2><strong>Box-Shuffle</strong>
-    </Button>
-  }
+
   const renderBox = (box, index) => {
     return(
       <InfoBox data={box} key={index} dig={digHandler}></InfoBox>
@@ -170,15 +182,20 @@ export default function App() {
             </Button>
             <br/><br/>
             {reShuffle ? <Button variant="primary" size="lg" onClick={() => reDigHandler(titleId)} style={restartButton} className='restartButton'>
-                            <h2 role="img" aria-label="reshuffle"></h2><strong>Box-Shuffle</strong>
+                            <h2 role="img" aria-label="reshuffle"></h2><strong>Re-Shuffle</strong>
                           </Button> : null}
             {/* <Button variant="primary" size="lg" onClick={() => reDigHandler(titleId)} style={restartButton} className='restartButton'>
               <h2 role="img" aria-label="reshuffle"></h2><strong>Box-Shuffle</strong>
             </Button> */}
             <br/>
-            {/* <Button variant="primary" size="lg" onClick={aboutHandler} style={restartButton}>
+            <Button variant="primary" size="lg" onClick={setAboutModalIsOpenToTrue} style={restartButton}>
             <h2 role="img" aria-label="about">🔀</h2><strong>About</strong>
-            </Button> */}
+            </Button>
+
+            <Modal isOpen={modalIsOpen}>
+                <button onClick={setAboutModalIsOpenToFalse}>x</button>
+                <AboutModal/>
+            </Modal>
           </Grid>
           
           <Grid style={footer} item xs={12}>
