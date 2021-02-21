@@ -23,16 +23,17 @@ function App() {
         setArticleData(data.articles);
       });
   };
-
-  const digHandler  = (link) => {
+  var currentTitle = 'Welcome to pickabox.space';
+  const digHandler  = (title) => {
       return (event) => {
-        console.log('I am fetching this link', link);
+        console.log('I am fetching this link', title);
+        currentTitle = title;
       }
   }
 
   console.log(articleData);
 
-  var currentTitle = 'Welcome, Now Pick A Box!';
+
 
   const renderBox = (box, index) => {
     return(
