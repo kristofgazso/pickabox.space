@@ -49,6 +49,7 @@ Pickabox, an automatic organizer and random generator of wikis upon wikis, is a 
           <b>Harry Zhu</b>
           <br>
           <p><a href="https://linkedin.com/in/harryjzhu">LinkedIn</a></p>
+          <p>Full Stack Support</p>
         </sub>
       </a>
       <br/>
@@ -60,6 +61,7 @@ Pickabox, an automatic organizer and random generator of wikis upon wikis, is a 
         <b>Abraham Wong</b>
         <br>
           <p><a href="https://linkedin.com/in/abraham-wong-wy">LinkedIn</a></p>
+          <p>Full Stack Support</p>
       </sub></a>
       <br/>
     </td>
@@ -70,6 +72,7 @@ Pickabox, an automatic organizer and random generator of wikis upon wikis, is a 
           <b>Kristof Gazsco</b>
           <br>
           <p><a href="https://linkedin.com/in/kristofgazso">LinkedIn</a></p>
+          <p>Back End Support / Team Lead</p>
         </sub>
       </a>
       <br/>
@@ -81,6 +84,7 @@ Pickabox, an automatic organizer and random generator of wikis upon wikis, is a 
          <b>Rozan Mhrzn</b>
          <br>
           <p><a href="https://linkedin.com/in/rozan-mhrzn-203561180">LinkedIn</a></p>
+          <p>Supporting Developer</p>
        </sub>
        </a>
        <br/>
