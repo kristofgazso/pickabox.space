@@ -70,12 +70,20 @@ export default function App() {
         setArticleData(data.articles);
       });
   };
+  document.title = 'Welcome to pickabox.space';
   var currentTitle = 'Welcome to pickabox.space';
+  
+
+
+  console.log(articleData);
+
   const digHandler  = (title) => {
-      return (event) => {
-        console.log('I am fetching this link', title);
-        currentTitle = title;
-      }
+    return (event) => {
+      console.log('I am fetching this link', title);
+      // this.setState({title: title});
+      document.title = title;
+      console.log(document.title)
+    }
   }
 
   const renderBox = (box, index) => {
@@ -102,7 +110,7 @@ export default function App() {
           </Button>
 
         </Grid>
-        <Grid container item xs={12} sm={10} spacing={5} justify="flex-end" style={boxGrid}>
+        <Grid container item xs={12} sm={10} spacing={4} justify="flex-end" style={boxGrid}>
             {articleData && articleData.map(renderBox)}
         </Grid>
       </Grid>
