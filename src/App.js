@@ -185,19 +185,14 @@ export default function App() {
 
       <Grid container item spacing={3} xs={12} justify="flex-end" style={{position: 'absolute'}}>
         <Grid item xs={12} sm={2}>
-          <img style={pageIcon} src={logo} alt="Logo" />
-        </Grid>
-        <Grid item container xs={12} sm={10} >
-          <h1 style={pageTitle}>
-            {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
-          </h1>
-          <Grid item xs={12} style={subTitleStyle} onClick={() => titleClick(titleLink)} className='subTitle'>{subTitle}</Grid>
-        </Grid>
-        <Grid item container xs={12} sm={2} style={{position: 'relative'}}>
+          <Grid item xs={12}>
+            <img style={pageIcon} src={logo} alt="Logo" />
+          </Grid>
+          <br/>
           <Grid item xs={12} style={pageIntro}> 
             
             <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton} className='restartButton'>
-             <strong>Start Over</strong>
+            <strong>Start Over</strong>
             </Button>
             <h3 style={subText}>Tired of your rabbithole? Start over</h3>
             {reShuffle ? <Button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} variant="primary" size="lg" onClick={() => reDigHandler(titleId, subTitle)} style={restartButton} className='restartButton'>
@@ -208,7 +203,6 @@ export default function App() {
                           </Button>: null}
 
             <h3 style={subText}>Shuffle within this article</h3>
-            <br/>
             <Button variant="primary" size="lg" onClick={setAboutModalIsOpenToTrue} style={restartButton} className='restartButton'>
               <strong>About</strong>
             </Button>
@@ -223,13 +217,20 @@ export default function App() {
               <ul>{history && history.map(renderHistory)}</ul>
             </Grid>
           </Grid>
-          <br/>
-          
-          
+            <br/>
         </Grid>
-        <Grid container item xs={12} sm={10} spacing={4} justify="flex-end" style={boxGrid}>
-            {articleData && articleData.map(renderBox)}
+
+        <Grid item container xs={12} sm={10} spacing={4} style={{margin: '0px', paddingBottom: '0px'}}>
+          <h1 style={pageTitle}>
+            {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
+          </h1>
+          <Grid item xs={12} style={subTitleStyle} onClick={() => titleClick(titleLink)} className='subTitle'>{subTitle}</Grid>
+          <Grid container item xs={12} spacing={4} justify="flex-end" style={boxGrid}>
+              {articleData && articleData.map(renderBox)}
+          </Grid>
         </Grid>
+        
+        
         <Grid style={footer} item xs={12}>
             <h3 style={{fontFamily: 'Changa'}}>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">The HAKers</a></h3>
         </Grid>
@@ -253,8 +254,8 @@ const subTitleStyle={
   fontWeight: 'bold',
   fontSize: '35px',
   lineHeight: 'normal',
-  marginBottom: '10px',
   cursor: 'pointer',
+  padding: '0px',
   /* or 71% */
 
   display: 'flex',
@@ -272,8 +273,8 @@ const pageTitle={
   lineHeight: 'normal',
   margin: 'auto',
   justifyContent: 'center',
+  padding: '0px',
   marginTop: '5px',
-  marginBottom: '10px',
   /* or 71% */
 
   display: 'flex',
