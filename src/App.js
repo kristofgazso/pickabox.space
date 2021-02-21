@@ -40,6 +40,12 @@ export default function App() {
   // State showing whether reshuffle button exist or not
   const [reShuffle, setReshuffle] = useState(false);
 
+  // Spinning screen for loading
+  // const [loader, showLoader, hideLoader] = useLoader();
+
+  //history states
+  const [history, setHistory] = useState([]);
+  
 
   // About Modal
   const setAboutModalIsOpenToTrue = () => {
@@ -124,20 +130,31 @@ export default function App() {
     window.focus();
   }
 
-  const reDigHandler = (id) =>{
+  const reDigHandler = (id, title) =>{
     ref.current.continuousStart();
       fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space?id=" + id)
         .then((resp) => resp.json())
         .then((data) => {
           setArticleData(data.articles);
           ref.current.complete();
+          setSubTitles("Article: " + title);
+          setId(id);
     });
   }
   
   const digHandler = (title, id, link) => {
     return (event) => {
-      console.log('I am fetching this link', title);
       ref.current.continuousStart();
+
+      if(history.length < 5){
+        let temp = history;
+        temp.unshift({id: id, title: title});
+      }
+      else{
+        let temp = history;
+        temp.pop();
+        temp.unshift({id: id, title: title});
+      }
       fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space?id=" + id)
         .then((resp) => resp.json())
         .then((data) => {
@@ -157,36 +174,41 @@ export default function App() {
       <InfoBox data={box} key={index} dig={digHandler}></InfoBox>
     )
   }
+
+  const renderHistory = (history, index) => {
+    return(
+      <Grid item xs={12} key={index} onClick={()=> reDigHandler(history.id, history.title)} style={historyEntry} className='historyTags'>{history.title}</Grid>
+    )
+  }
   return (
     <div className="App">
     <LoadingBar color='#2565AE' ref={ref} />
 
-      <Grid container spacing={3} xs={12} justify="flex-end" >
-        <Grid item xs={12} sm={3}>
+      <Grid container item spacing={3} xs={12} justify="flex-end" >
+        <Grid item xs={12} sm={2}>
           <img style={pageIcon} src={logo} alt="Logo" />
         </Grid>
-        <Grid item container xs={12} sm={9} >
-        <>
+        <Grid item container xs={12} sm={10} >
           <h1 style={pageTitle}>
             {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
           </h1>
-        </>
           <Grid item xs={12} style={subTitleStyle} onClick={() => titleClick(titleLink)} className='subTitle'>{subTitle}</Grid>
         </Grid>
         <Grid item container xs={12} sm={2} style={{position: 'relative'}}>
           <Grid item xs={12} style={pageIntro}> 
             
             <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton} className='restartButton'>
-             <strong>Shuffle</strong>
+             <strong>Start Over</strong>
             </Button>
+            <h3 style={subText}>Tired of your rabbithole? Start over</h3>
             <br/>
-            {reShuffle ? <Button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} variant="primary" size="lg" onClick={() => reDigHandler(titleId)} style={restartButton} className='restartButton'>
-                            <strong>Re-Shuffle</strong>
-                          </Button> : null}
+            {reShuffle ? <Button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} variant="primary" size="lg" onClick={() => reDigHandler(titleId, subTitle)} style={restartButton} className='restartButton'>
+                            <strong>Find more boxes</strong>
+                          </Button>: null}
 
                         {isShown && (
                     <div style={{textAlign: 'center'}}>
-                      <p><em>Shuffles within this article.</em></p>
+                      <p style={subText}><em>Shuffles within this article.</em></p>
                     </div>
                   )}
 
@@ -199,6 +221,11 @@ export default function App() {
                 <button onClick={setAboutModalIsOpenToFalse}>x</button>
                 <AboutModal/>
             </Modal>
+            <br/>
+            <Grid item xs={12} style={historyGrid}>
+              <h4 style={{font:'14px', marginBottom: '7px', fontFamily: 'Georgia',}}>Rabbithole History:</h4>
+              {history && history.map(renderHistory)}
+            </Grid>
           </Grid>
           <br/>
           
@@ -264,7 +291,7 @@ const pageIcon={
   margin: '10px',
   height: '100px',
   width:'auto',
-  left: '30px',
+  left: '10px',
   float: 'left'
 }
 const pageIntro={
@@ -289,6 +316,36 @@ const restartButton={
   color: '#fff',
   transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
   margin: 'auto',
+}
+
+const historyEntry={
+  marginTop: '7px',
+  marginBottom: '7px',
+  fontFamily: 'Open Sans',
+  fontStyle: 'normal',
+  fontWeight: 'normal',
+  cursor:'pointer',
+  // textColor:'',
+  transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
+}
+
+const historyGrid={
+  fontFamily: 'Roboto',
+  fontStyle: 'normal',
+  marginLeft: '15px',
+}
+
+const subText={
+  fontFamily: 'Open Sans',
+  fontStyle: 'italic',
+  fontWeight: 'normal',
+  fontSize: '14px',
+  lineHeight: '14px',
+  /* identical to box height, or 117% */
+
+  textAlign: 'center',
+
+  color: '#222222',
 }
 
 const boxGrid={

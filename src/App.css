@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background: #C2D3E7;
   margin: 10px;
 }
 
@@ -64,5 +63,9 @@
 }
 
 .subTitle:hover{
+  transform: scale(1.05, 1.05);
+}
+
+.historyTags:hover{
   transform: scale(1.05, 1.05);
 }
