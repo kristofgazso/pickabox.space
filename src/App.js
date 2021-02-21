@@ -141,7 +141,7 @@ export default function App() {
         .then((data) => {
           setArticleData(data.articles);
           ref.current.complete();
-          setSubTitles("Article: " + title);
+          setSubTitles(title);
           setId(id);
     });
   }
