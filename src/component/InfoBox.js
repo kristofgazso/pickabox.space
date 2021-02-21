@@ -54,7 +54,11 @@ const box={
   height: '320px',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'spaceBetween'
+  justifyContent: 'spaceBetween',
+  paddingDown:'25px',
+  paddingRight:'10px',
+  paddingLeft:'10px',
+  padding:'5px'
 }
 const boxTitle={
   height: 'auto',
@@ -64,7 +68,9 @@ const boxTitle={
   fontWeight: 'normal',
   fontSize: '24px',
   lineHeight: '26px',
-  margin:'5px'
+  margin:'5px',
+  paddingTop:'25px',
+  
 }
 
 const wikiButton={
