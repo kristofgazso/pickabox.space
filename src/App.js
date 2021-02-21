@@ -99,7 +99,7 @@ export default function App() {
         .then((data) => {
           console.log(data, typeof data);
           setArticleData(data.articles);
-          setSubTitles('Current Title: ' +title);
+          setSubTitles(title);
           setTitleLink(link);
           hideLoader();
         });
@@ -137,9 +137,9 @@ export default function App() {
         </Grid>
         <Grid item container xs={12} sm={9} >
           <Grid item xs={12} style={pageTitle}>
-          Hi! {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
+            {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
           </Grid>
-          <Grid item xs={12} style={subTitleStyle} onClick={() => titleClick(titleLink)} >{subTitle}</Grid>
+          <Grid item xs={12} style={subTitleStyle} onClick={() => titleClick(titleLink)} className='subTitle'>{subTitle}</Grid>
         </Grid>
         <Grid item container xs={12} sm={2} style={{position: 'relative'}}>
           <Grid item xs={12} style={pageIntro}> 
