@@ -159,7 +159,7 @@ export default function App() {
   }
   return (
     <div className="App">
-    <LoadingBar color='#222222' ref={ref} />
+    <LoadingBar color='#2565AE' ref={ref} />
 
       <Grid container spacing={3} xs={12} justify="flex-end" >
         <Grid item xs={12} sm={3}>
