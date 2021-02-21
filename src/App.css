@@ -1,8 +1,10 @@
 .App {
   text-align: center;
-  background: #DDD7CF;
+  background: #C2D3E7;
   margin: 10px;
 }
+
+::-webkit-scrollbar {display:none;}
 
 .App-logo {
   height: 40vmin;

@@ -1,8 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import InfoBox from './component/InfoBox';
 import Grid from '@material-ui/core/Grid';
 import React, { useState, useEffect } from 'react';
+import logo from './image/boxIcon.png';
+import Button from 'react-bootstrap/Button';
 
 function App() {
   
@@ -23,22 +24,42 @@ function App() {
       });
   };
 
+  const digHandler  = (link) => {
+      return (event) => {
+        console.log('I am fetching this link', link);
+      }
+  }
+
+  console.log(articleData);
+
+  var currentTitle = 'Welcome, Now Pick A Box!';
+
   const renderBox = (box, index) => {
     return(
-      <InfoBox data={box} key={index}></InfoBox>
+      <InfoBox data={box} key={index} dig={digHandler}></InfoBox>
     )
   }
   return (
     <div className="App">
-      <Grid container spacing={3} justify="flex-end">
-        <Grid item xs={12} sm={7} style={pageTitle}>Welcome! Ready to get pumped?</Grid>
-        <Grid container item xs={12} sm={10} spacing={5} justify="flex-end">
+      <Grid container spacing={3} xs={12} justify="flex-end" >
+        <Grid item xs={12} sm={5}>
+          <img style={pageIcon} src={logo} alt="Logo" />
+        </Grid>
+        <Grid item xs={12} sm={7} style={pageTitle}>{currentTitle}</Grid>
+        <Grid item xs={12} sm={2} style={pageIntro}>
+          Just pick a box. <br/><br/>
+          You are provided with 8 random wikipedia articles. <br/><br/>
+          When you click on one, you are given 8 random articles from the links the article contains.<br/><br/>
+          Click on the Open in Wikipedia button at any time to save it in a new tab Let’s see how far the rabbithole goes.<br/><br/>
+          <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton}>
+            Start Over
+          </Button>
+
+        </Grid>
+        <Grid container item xs={12} sm={10} spacing={5} justify="flex-end" style={boxGrid}>
             {articleData && articleData.map(renderBox)}
         </Grid>
       </Grid>
-      <button default onClick={clickHandler}>
-        Start Over
-      </button>
     </div>
   );
 }
@@ -60,4 +81,36 @@ const pageTitle={
   color: '#000000'
 }
 
+const pageIcon={
+  margin: '10px',
+  height: '100px',
+  width:'auto',
+  left: '30px',
+  float: 'left'
+}
+const pageIntro={
+  textAlign: 'left',
+}
+
+const restartButton={
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '0px 16px',
+
+  // position: 'absolute',
+  width: '133px',
+  height: '34px',
+  cursor:'pointer',
+
+  background: '#074EE8',
+  borderRadius: '48px',
+  borderColor: 'transparent',
+  color: '#fff',
+}
+
+const boxGrid={
+  border: '5px'
+}
 export default App;
