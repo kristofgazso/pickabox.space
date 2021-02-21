@@ -21,7 +21,7 @@ const InfoBox = (props) => {
           </Card.Text>
         </Card.Body>
         <Button style={wikiButton} onClick={() => handleClick(props.data.url)}>
-          <span>Save</span></Button>
+          <span>Read More</span></Button>
       </Card>
     </Grid>
   )
@@ -69,14 +69,14 @@ const boxTitle={
   fontSize: '24px',
   lineHeight: '26px',
   margin:'5px',
-  paddingTop:'25px',
+  paddingTop:'5px',
   
 }
 
 const wikiButton={
   bottom: '5px',
   right: '5px',
-  width: '100px',
+  width: '120px',
   marginLeft: 'auto',
 }
 

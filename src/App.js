@@ -11,7 +11,7 @@ import useLoader from './component/useLoader';
 
 
 // Title rotation
-const words = ["Curious about something?", "Click on a box!", "Save something you like!"]
+const words = ["Bored?   ", "Click on a box!", "Read something you like, or Shuffle!"]
 
 export default function App() {
   
