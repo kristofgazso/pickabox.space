@@ -183,7 +183,7 @@ export default function App() {
     <div className="App">
     <LoadingBar color='#2565AE' ref={ref} />
 
-      <Grid container item spacing={3} xs={12} justify="flex-end" style={{position: 'fixed'}}>
+      <Grid container item spacing={3} xs={12} justify="flex-end" style={{position: 'absolute'}}>
         <Grid item xs={12} sm={2}>
           <img style={pageIcon} src={logo} alt="Logo" />
         </Grid>
