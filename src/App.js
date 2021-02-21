@@ -209,8 +209,8 @@ export default function App() {
                           </Button>: null}
 
             <h3 style={subText}>Shuffle within this article</h3>
-            <Button variant="primary" size="lg" onClick={setAboutModalIsOpenToTrue} style={restartButton} className='restartButton'>
-              <strong>About</strong>
+            <Button variant="primary" size="lg" onClick={setAboutModalIsOpenToTrue} style={restartButton} className='instructionBtn restartButton'>
+              <strong>Instructions</strong>
             </Button>
 
             <Modal isOpen={modalIsOpen}>
@@ -219,7 +219,7 @@ export default function App() {
             </Modal>
             <br/>
             <Grid item xs={12} style={historyGrid}>
-              <h4 style={{font:'14px', marginBottom: '7px', fontFamily: 'Georgia',}}>Rabbithole History:</h4>
+              <h4 style={{font:'14px', marginBottom: '7px', fontFamily: 'Georgia', color: '#222222'}}>Rabbithole History:</h4>
               <ul>{history && history.map(renderHistory)}</ul>
             </Grid>
           </Grid>
@@ -235,11 +235,11 @@ export default function App() {
               {articleData && articleData.map(renderBox)}
           </Grid>
         </Grid>
-        
         <Scroll showBelow={50} />
+        
+        <Grid style={footer} item xs={12} >
+            <h3 style={{fontFamily: 'Changa', }}>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space" style={{color: '#2565AE'}}>The HAKers</a></h3>
 
-        <Grid style={footer} item xs={12}>
-            <h3 style={{fontFamily: 'Changa'}}>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">The HAKers</a></h3>
         </Grid>
       </Grid>
     </div>
@@ -301,6 +301,7 @@ const pageIcon={
 }
 const pageIntro={
   textAlign: 'left',
+  paddingTop: '50px',
 }
 
 const restartButton={
@@ -315,10 +316,10 @@ const restartButton={
   height: '34px',
   cursor:'pointer',
 
-  background: '#2565AE',
+  // background: '#2565AE',
   borderRadius: '5px',
   borderColor: 'transparent',
-  color: '#fff',
+  // color: '#fff',
   transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
   margin: 'auto',
 }

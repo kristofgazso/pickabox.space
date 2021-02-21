@@ -70,6 +70,20 @@
   transform: scale(1.05, 1.05);
 }
 
+.historyTags{
+  color: #2565AE;
+}
+
 .restartButton strong{
   font-family: 'Changa';
+}
+
+.restartButton {
+  background: #2565AE;
+  color: #fff;
+}
+
+.instructionBtn{
+  background: #fff;
+  color: #2565AE;
 }
