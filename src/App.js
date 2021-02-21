@@ -10,9 +10,8 @@ import LoadingBar from 'react-top-loading-bar';
 import Scroll from './component/scroll';
 
 
-// Title rotation
+// Page title rotation for typewriter effect ~hz
 const words = ["Bored?      ", "Shuffle, Rabbithole, and Repeat."];
-// const words = ["Bored?", "Shuffle", "Rabbithole", "Repeat."]
 
 export default function App() {
 
@@ -23,18 +22,18 @@ export default function App() {
 
   // React Hooks
 
-  // Type writer Effects
+  // Type writer Effects hooks
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [blink, setBlink] = useState(true);
   const [reverse, setReverse] = useState(false);
 
-  // Subtitle
+  // Subtitle hooks
   const [subTitle, setSubTitles] = useState('');
   const [titleLink, setTitleLink] = useState('');
   const [titleId, setId] = useState('');
 
-  // Modal
+  // Modal hook
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   // State showing whether reshuffle button exist or not
@@ -43,10 +42,9 @@ export default function App() {
   // Spinning screen for loading
   // const [loader, showLoader, hideLoader] = useLoader();
 
-  //history states
+  //Article View History states
   const [history, setHistory] = useState([]);
   
-
   // About Modal
   const setAboutModalIsOpenToTrue = () => {
     setModalIsOpen(true)
@@ -59,8 +57,8 @@ export default function App() {
   // onHover Events
   const [isShown, setIsShown] = useState(false);
 
+  // temporary variable to disable blink when typing
   var typerDone = false;
-
 
   // Link Handler
   useEffect(() => {
@@ -109,8 +107,11 @@ export default function App() {
     return () => clearTimeout(timeout2);
   }, [blink]);
 
+
+    // Fetches the API call and generates 8 articles from Wikipedia
     const clickHandler = (e) => {
       ref.current.continuousStart();
+
     // Using cors-anywhere proxy to scrape the data on wikipedia
     fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space")
       .then((resp) => resp.json())
@@ -125,11 +126,14 @@ export default function App() {
     
   };
 
+  // Opens URL in new tab
   const titleClick =(link) =>{
     window.open(link);
     window.focus();
   }
 
+  // Reshuffles but within the same article
+  // and fetches secondary API tailored by adding an identifier at the end
   const reDigHandler = (id, title) =>{
     ref.current.continuousStart();
       fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space?id=" + id)
@@ -142,6 +146,7 @@ export default function App() {
     });
   }
   
+  // Fetches API call and intialize article view history
   const digHandler = (title, id, link) => {
     return (event) => {
       ref.current.continuousStart();

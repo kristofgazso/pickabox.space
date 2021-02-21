@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import IconButton from '@material-ui/core/IconButton';
 
+// Styles for the back-to-top icon
 const useStyles = makeStyles((theme) => ({
     toTop: {
         zIndex: 2,
@@ -26,12 +27,14 @@ const useStyles = makeStyles((theme) => ({
 })
 )
 
+// Functionality for back-to-top on home page
 const Scroll = ({
     showBelow,
 }) => {
 
     const classes = useStyles();
 
+    // Show button hook
     const [show, setShow] = useState(showBelow ? false : true)
 
     const handleScroll = () => {
