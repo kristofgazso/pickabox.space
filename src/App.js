@@ -47,7 +47,7 @@ export default function App() {
     const timeout = setTimeout(() => {
       setSubIndex((prev) => prev + (reverse ? -1 : 1));
     }, Math.max(reverse ? 75 : subIndex === words[index].length ? 400 :
-                150, parseInt(Math.random() * 350)));
+                150, parseInt(Math.random() * 150)));
   
     return () => clearTimeout(timeout);
 }, [subIndex, index, reverse]);
@@ -57,7 +57,7 @@ export default function App() {
   useEffect(() => {
     const timeout2 = setTimeout(() => {
       setBlink((prev) => !prev);
-    }, 200);
+    }, 650);
     return () => clearTimeout(timeout2);
   }, [blink]);
     const clickHandler = (e) => {
