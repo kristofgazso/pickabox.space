@@ -201,7 +201,6 @@ export default function App() {
              <strong>Start Over</strong>
             </Button>
             <h3 style={subText}>Tired of your rabbithole? Start over</h3>
-            <br/>
             {reShuffle ? <Button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} variant="primary" size="lg" onClick={() => reDigHandler(titleId, subTitle)} style={restartButton} className='restartButton'>
                             <strong>Find more boxes</strong>
                           </Button>: null}
@@ -211,8 +210,6 @@ export default function App() {
                       <p style={subText}><em>Shuffles within this article.</em></p>
                     </div>
                   )}
-
-            <br></br>
             <Button variant="primary" size="lg" onClick={setAboutModalIsOpenToTrue} style={restartButton} className='restartButton'>
               <strong>About</strong>
             </Button>
