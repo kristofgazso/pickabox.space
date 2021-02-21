@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import React, { useState, useEffect } from 'react';
 import logo from './image/boxIcon.png';
 import Button from 'react-bootstrap/Button';
-import Modal from react-modal;
+import Modal from 'react-modal';
 import AboutModal from './component/AboutModal';
 import useLoader from './component/useLoader';
 
@@ -178,18 +178,18 @@ export default function App() {
           <Grid item xs={12} style={pageIntro}> 
             
             <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton} className='restartButton'>
-              <h2 role="img" aria-label="shuffle"></h2><strong>Shuffle</strong>
+              <h2 role="img" aria-label="shuffle">🔀</h2><strong>Shuffle</strong>
             </Button>
             <br/><br/>
             {reShuffle ? <Button variant="primary" size="lg" onClick={() => reDigHandler(titleId)} style={restartButton} className='restartButton'>
-                            <h2 role="img" aria-label="reshuffle"></h2><strong>Re-Shuffle</strong>
+                            <h2 role="img" aria-label="reshuffle">🔀</h2><strong>Re-Shuffle</strong>
                           </Button> : null}
             {/* <Button variant="primary" size="lg" onClick={() => reDigHandler(titleId)} style={restartButton} className='restartButton'>
               <h2 role="img" aria-label="reshuffle"></h2><strong>Box-Shuffle</strong>
             </Button> */}
-            <br/>
+            <br/><br></br>
             <Button variant="primary" size="lg" onClick={setAboutModalIsOpenToTrue} style={restartButton}>
-            <h2 role="img" aria-label="about">🔀</h2><strong>About</strong>
+            <h2 role="img" aria-label="about">📚</h2><strong>About</strong>
             </Button>
 
             <Modal isOpen={modalIsOpen}>
