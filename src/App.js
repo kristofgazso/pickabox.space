@@ -99,7 +99,7 @@ export default function App() {
     <div className="App">
       <Grid container spacing={3} xs={12} justify="flex-end" >
         <Grid item xs={12} sm={5}>
-          <img style={pageIcon} src={logo} alt="Logo" />
+          <img href="/" style={pageIcon} src={logo} alt="Logo" />
         </Grid>
         <Grid item xs={12} sm={7} style={pageTitle}>
           Hi! {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
