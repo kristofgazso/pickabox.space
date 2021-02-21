@@ -250,7 +250,7 @@ const footer = {
 }
 
 const subTitleStyle={
-  fontFamily: 'Didot',
+  fontFamily: 'Changa',
   fontStyle: 'normal',
   fontWeight: 'bold',
   fontSize: '35px',
@@ -267,7 +267,7 @@ const subTitleStyle={
   justifyContent: 'center',
 }
 const pageTitle={
-  fontFamily: 'Didot',
+  fontFamily: 'Changa',
   fontStyle: 'normal',
   fontWeight: 'bold',
   fontSize: '48px',
