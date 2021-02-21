@@ -24,7 +24,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Confined Indorms, a 2020 Gameheads production
+Pickabox, an automatic organizer and random generator of wikis upon wikis, is a user-friendly web application where everyday Wikipedia users generate random wikipedia pages on our platform. It is truly the organizational tool to help you keep track of what you’re reading and learning.
 
 
 ### Built With
@@ -37,7 +37,7 @@ Confined Indorms, a 2020 Gameheads production
 
 
 <!-- CONTACT -->
-### Contwct Us
+### Contact Us
 
 <table>
   <tr>
@@ -47,6 +47,8 @@ Confined Indorms, a 2020 Gameheads production
         <br />
         <sub>
           <b>Harry Zhu</b>
+          <br>
+          <p><a href="https://linkedin.com/in/harryjzhu">LinkedIn</a></p>
         </sub>
       </a>
       <br/>
@@ -55,7 +57,9 @@ Confined Indorms, a 2020 Gameheads production
       <img src="https://avatars.githubusercontent.com/u/46876547?s=460&v=4" width="75px;" alt="Abraham"/>
       <br />
       <sub>
-        <b>Chun Tat Chan</b>
+        <b>Abraham Wong</b>
+        <br>
+          <p><a href="https://linkedin.com/in/abraham-wong-wy">LinkedIn</a></p>
       </sub></a>
       <br/>
     </td>
@@ -63,7 +67,10 @@ Confined Indorms, a 2020 Gameheads production
       <a href="https://github.com/kristofgazso">
         <img src="https://avatars.githubusercontent.com/u/17406948?s=460&u=f66d1c6ba22b18b60de9bf749a550a1d342f42a6&v=4" width="75px;" alt="Kristof"/><br />
         <sub>
-          <b>Kristof Gazso</b>
+          <b>Kristof Gazsco</b>
+          <br>
+          <p><a href="https://linkedin.com/in/kristofgazso">LinkedIn</a></p>
+>>>>>>> 088511d4b72d0dcb62c6db431e777335b1742d72
         </sub>
       </a>
       <br/>
@@ -73,6 +80,8 @@ Confined Indorms, a 2020 Gameheads production
        <br />
        <sub>
          <b>Rozan Mhrzn</b>
+         <br>
+          <p><a href="https://linkedin.com/in/rozan-mhrzn-203561180">LinkedIn</a></p>
        </sub>
        </a>
        <br/>
