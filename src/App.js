@@ -10,7 +10,8 @@ import useLoader from './component/useLoader';
 
 
 // Title rotation
-const words = ["Bored?    ", "Pick A Box", "Shuffle, Rabbithole, and Repeat"];
+const words = ["Bored?      ", "Shuffle, Rabbithole, and Repeat."];
+// const words = ["Bored?", "Shuffle", "Rabbithole", "Repeat."]
 
 export default function App() {
   
@@ -51,6 +52,7 @@ export default function App() {
   // onHover Events
   const [isShown, setIsShown] = useState(false);
 
+  var typerDone = false;
 
 
   // Link Handler
@@ -62,8 +64,11 @@ export default function App() {
   useEffect(() => {
     
     // Check done typing all words
-    if (index === words.length) return;
-
+    if (index === words.length){
+      return;
+    }
+    
+    typerDone = true;
     // Checks if need to reverse, otherwise no
     if ( subIndex === words[index].length + 1 && 
         index !== words.length - 1 && !reverse ) {
@@ -90,8 +95,10 @@ export default function App() {
   // blinker and time delay
   useEffect(() => {
     const timeout2 = setTimeout(() => {
-      setBlink((prev) => !prev);
-    }, 650);
+      if(typerDone){
+        setBlink((prev) => !prev);
+      }
+    }, 500);
     return () => clearTimeout(timeout2);
   }, [blink]);
 
@@ -144,23 +151,6 @@ export default function App() {
     }
   }
 
-
-  // const aboutHandler = () => {
-  //   return (event) => {
-  //     this.showModal();
-
-  //   }
-  // }
-
-  // state = {
-  //   show: false
-  // };
-  // showModal = e => {
-  //   this.setState({
-  //     show: true
-  //   });
-  // };
-
   const renderBox = (box, index) => {
     return(
       <InfoBox data={box} key={index} dig={digHandler}></InfoBox>
@@ -174,10 +164,11 @@ export default function App() {
           <img style={pageIcon} src={logo} alt="Logo" />
         </Grid>
         <Grid item container xs={12} sm={9} >
-          <Grid item xs={12} style={pageTitle}>
-          {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
-          </Grid>
-          
+        <>
+          <h1 style={pageTitle}>
+            {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
+          </h1>
+        </>
           <Grid item xs={12} style={subTitleStyle} onClick={() => titleClick(titleLink)} className='subTitle'>{subTitle}</Grid>
         </Grid>
         <Grid item container xs={12} sm={2} style={{position: 'relative'}}>
@@ -255,8 +246,7 @@ const pageTitle={
   fontWeight: 'bold',
   fontSize: '48px',
   lineHeight: 'normal',
-  marginTop: '20px',
-  margin:'auto',
+  margin: 'auto',
   justifyContent: 'center',
   marginTop: '5px',
   marginBottom: '10px',
