@@ -15,7 +15,7 @@ const InfoBox = (props) => {
     <Grid container item xs={12} md={6} lg={3} spacing={2}>
       <Card style={box}>
         <Card.Title style={boxTitle}>{props.data.title}</Card.Title>
-        <Card.Body style={boxBody} onClick={props.dig('https://en.wikipedia.org/wiki/' + props.data.title)}>
+        <Card.Body style={boxBody} onClick={props.dig(props.data.title)}>
           <Card.Text>
             {props.data.extract}
           </Card.Text>
