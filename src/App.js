@@ -60,8 +60,8 @@ export default function App() {
     }, 650);
     return () => clearTimeout(timeout2);
   }, [blink]);
-    const clickHandler = (e) => {
 
+    const clickHandler = (e) => {
     // Using cors-anywhere proxy to scrape the data on wikipedia
     fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space")
       .then((resp) => resp.json())
@@ -69,17 +69,25 @@ export default function App() {
         console.log(data, typeof data);
         setArticleData(data.articles);
       });
+
+    
   };
   document.title = 'Welcome to pickabox.space';
   var currentTitle = 'Welcome to pickabox.space';
   
-  const digHandler  = (title) => {
+  const digHandler = (title, id) => {
     return (event) => {
       console.log('I am fetching this link', title);
-      // this.setState({title: title});
       document.title = title;
       console.log(document.title)
-    }
+
+      fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space?id=" + id)
+        .then((resp) => resp.json())
+        .then((data) => {
+          console.log(data, typeof data);
+          setArticleData(data.articles);
+        });
+      }
   }
 
   const renderBox = (box, index) => {
