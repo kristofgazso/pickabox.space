@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h3 align="center">Pickabox, a wiki organizer of a wiki</h3>
+  <h3 align="center">Pickabox, a tool for creativity</h3>
   <h4 align="center"><a target="_blank" href="http://pickabox.space">Official Website: pickabox.space</a></h4>
 
   <p align="center">
@@ -20,13 +20,20 @@
   * [Built With](#built-with)
 * [Contact Us](#contact-us)
 
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 Confined Indorms, a 2020 Gameheads production
 
+
 ### Built With
 * [Create-React-App](https://reactjs.org/docs/create-a-new-react-app.html)
+* [Figma](https://www.figma.com/)
+* [Figma Lo-fi Wireframe Kit](https://www.figma.com/community/file/887892609124245416/Lo-fi-Wireframe-Kit)
+* [Google Cloud](https://cloud.google.com/)
+* [Domain.com](https://www.domain.com/)
+* [Wikipedia API](https://en.wikipedia.org/w/api.php)
 
 
 <!-- CONTACT -->
@@ -56,7 +63,7 @@ Confined Indorms, a 2020 Gameheads production
       <a href="https://github.com/kristofgazso">
         <img src="https://avatars.githubusercontent.com/u/17406948?s=460&u=f66d1c6ba22b18b60de9bf749a550a1d342f42a6&v=4" width="75px;" alt="Kristof"/><br />
         <sub>
-          <b>Kristof Gazsco</b>
+          <b>Kristof Gazso</b>
         </sub>
       </a>
       <br/>
