@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="App">
       <Grid container spacing={3} justify="flex-end">
-        <Grid item xs={12} sm={7} style={pageTitle}>{currentTitle}</Grid>
+        <Grid item xs={12} sm={7} style={pageTitle}>Welcome! Ready to get pumped?</Grid>
         <Grid container item xs={12} sm={10} spacing={5} justify="flex-end">
             {articleData && articleData.map(renderBox)}
         </Grid>

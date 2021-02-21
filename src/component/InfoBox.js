@@ -18,7 +18,7 @@ const InfoBox = (props) => {
             {props.data.extract}
           </Card.Text>
         </Card.Body>
-        <Button variant="primary" onClick={() => handleClick('https://en.wikipedia.org/wiki/' + props.data.title)}>Go to Wiki</Button>
+        <Button variant="primary" onClick={() => handleClick(props.data.url)}>Go to Wiki</Button>
       </Card>
     </Grid>
   )
