@@ -291,8 +291,8 @@ const pageIcon={
   padding: 'auto',
   height: 'auto',
   width:'auto',
-  left: '10px',
-  position: 'relative'
+  position: 'relative',
+  width: '-webkit-fill-available'
 }
 const pageIntro={
   textAlign: 'left',
