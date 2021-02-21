@@ -4,7 +4,11 @@ import Grid from '@material-ui/core/Grid';
 import React, { useState, useEffect } from 'react';
 import logo from './image/boxIcon.png';
 import Button from 'react-bootstrap/Button';
+
 // import Modal from './component/Modal';
+
+import useLoader from './component/useLoader';
+
 
 // Title rotation
 const words = ["Curious about something?", "Click on a box!", "Save something you like!"]
@@ -18,12 +22,17 @@ export default function App() {
   const [subIndex, setSubIndex] = useState(0);
   const [blink, setBlink] = useState(true);
   const [reverse, setReverse] = useState(false);
+  const [subTitle, setSubTitles] = useState('');
+  const [titleLink, setTitleLink] = useState('');
+  // Spinning screen for loading
+  const [loader, showLoader, hideLoader] = useLoader();
+  
 
   // Link Handler
   useEffect(() => {
     clickHandler();
   }, []);
-
+  
   // Type Writer Effect (hz)
   useEffect(() => {
     
@@ -53,7 +62,6 @@ export default function App() {
     return () => clearTimeout(timeout);
 }, [subIndex, index, reverse]);
 
-
   // blinker and time delay
   useEffect(() => {
     const timeout2 = setTimeout(() => {
@@ -63,29 +71,41 @@ export default function App() {
   }, [blink]);
 
     const clickHandler = (e) => {
+      showLoader();
     // Using cors-anywhere proxy to scrape the data on wikipedia
     fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space")
       .then((resp) => resp.json())
       .then((data) => {
         console.log(data, typeof data);
         setArticleData(data.articles);
+        hideLoader();
       });
 
     
   };
-  var currentTitle = 'Welcome to pickabox.space';
-  
-  const digHandler = (title, id) => {
-    return (event) => {
 
+  const titleClick =(link) =>{
+    window.open(link);
+    window.focus();
+  }
+  
+  const digHandler = (title, id, link) => {
+
+    return (event) => {
+      console.log('I am fetching this link', title);
+      showLoader();
       fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space?id=" + id)
         .then((resp) => resp.json())
         .then((data) => {
           console.log(data, typeof data);
           setArticleData(data.articles);
+          setSubTitles('Current Title: ' +title);
+          setTitleLink(link);
+          hideLoader();
         });
       }
   }
+
 
   // const aboutHandler = () => {
   //   return (event) => {
@@ -110,26 +130,31 @@ export default function App() {
   }
   return (
     <div className="App">
-      <Grid container spacing={3} xs={12} justify="flex-end" >
-        <Grid item xs={12} sm={5}>
-          <img href="/" style={pageIcon} src={logo} alt="Logo" />
-        </Grid>
-        <Grid item xs={12} sm={7} style={pageTitle}>
-          {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
-        </Grid>
-        <Grid item xs={12} sm={2} style={pageIntro}>
-          <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton}>
-          <h2 role="img" aria-label="shuffle">🔀</h2><strong>Shuffle</strong>
-          </Button>
-          <br></br>
-          {/* <Button variant="primary" size="lg" onClick={aboutHandler} style={restartButton}>
-          <h2 role="img" aria-label="about">🔀</h2><strong>About</strong>
-          </Button> */}
-          
-          
-          <Grid style={footer} item xs={10} sm={20}>
-          <h3>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">Team Placeholder</a></h3>
 
+      <Grid container spacing={3} xs={12} justify="flex-end" >
+        <Grid item xs={12} sm={3}>
+          <img style={pageIcon} src={logo} alt="Logo" />
+        </Grid>
+        <Grid item container xs={12} sm={9} >
+          <Grid item xs={12} style={pageTitle}>
+          Hi! {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
+          </Grid>
+          <Grid item xs={12} style={subTitleStyle} onClick={() => titleClick(titleLink)} >{subTitle}</Grid>
+        </Grid>
+        <Grid item container xs={12} sm={2} style={{position: 'relative'}}>
+          <Grid item xs={12} style={pageIntro}> 
+            
+            <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton} className='restartButton'>
+            <h2 role="img" aria-label="shuffle"></h2><strong>Shuffle</strong>
+            </Button>
+            <br></br>
+            {/* <Button variant="primary" size="lg" onClick={aboutHandler} style={restartButton}>
+            <h2 role="img" aria-label="about">🔀</h2><strong>About</strong>
+            </Button> */}
+          </Grid>
+          
+          <Grid style={footer} item xs={12}>
+            <h3>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">Team Placeholder</a></h3>
           </Grid>
           
         </Grid>
@@ -137,24 +162,46 @@ export default function App() {
             {articleData && articleData.map(renderBox)}
         </Grid>
       </Grid>
+      {loader}
     </div>
   );
 }
 
+
 const footer = {
   fontWeight:'bold',
   fontSize: '12px',
-  height:'100%',
-  paddingTop: '300%'
+  height:'auto',
+  bottom: '0',
+  position: 'absolute',
+}
+
+const subTitleStyle={
+  fontFamily: 'Roboto',
+  fontStyle: 'normal',
+  fontWeight: 'bold',
+  fontSize: '35px',
+  lineHeight: 'normal',
+  marginBottom: '20px',
+  cursor: 'pointer',
+  /* or 71% */
+
+  display: 'flex',
+  alignItems: 'center',
+  textAlign: 'center',
+
+  color: '#000000',
+  justifyContent: 'center',
 }
 const pageTitle={
   fontFamily: 'Roboto',
   fontStyle: 'normal',
   fontWeight: 'bold',
   fontSize: '48px',
-  lineHeight: '34px',
+  lineHeight: 'normal',
   marginTop: '20px',
-  marginBottom: '20px',
+  margin:'auto',
+  justifyContent: 'center',
   /* or 71% */
 
   display: 'flex',
@@ -191,6 +238,8 @@ const restartButton={
   borderRadius: '48px',
   borderColor: 'transparent',
   color: '#fff',
+  transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
+  margin: 'auto',
 }
 
 const boxGrid={

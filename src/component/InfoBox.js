@@ -15,7 +15,7 @@ const InfoBox = (props) => {
     <Grid container item xs={12} sm={6} md={4} lg={3} spacing={2}>
       <Card style={box} className='wikiBox shadow-box-example hoverable'>
         <Card.Title style={boxTitle}>{props.data.title}</Card.Title>
-        <Card.Body style={boxBody} onClick={props.dig(props.data.title, props.data.id)} >
+        <Card.Body style={boxBody} onClick={props.dig(props.data.title, props.data.id, props.data.url)} >
           <Card.Text>
             {props.data.extract}
           </Card.Text>
