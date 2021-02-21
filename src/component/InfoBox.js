@@ -20,7 +20,7 @@ const InfoBox = (props) => {
             {props.data.extract}
           </Card.Text>
         </Card.Body>
-        <Button style={wikiButton} onClick={() => handleClick()}>
+        <Button style={wikiButton} onClick={() => handleClick(props.data.url)}>
           <span>Open Wiki</span></Button>
       </Card>
     </Grid>
