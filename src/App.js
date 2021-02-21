@@ -73,10 +73,6 @@ export default function App() {
   document.title = 'Welcome to pickabox.space';
   var currentTitle = 'Welcome to pickabox.space';
   
-
-
-  console.log(articleData);
-
   const digHandler  = (title) => {
     return (event) => {
       console.log('I am fetching this link', title);
@@ -98,15 +94,16 @@ export default function App() {
           <img style={pageIcon} src={logo} alt="Logo" />
         </Grid>
         <Grid item xs={12} sm={7} style={pageTitle}>
-          Hello! {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
+          Hi! {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
         </Grid>
         <Grid item xs={12} sm={2} style={pageIntro}>
-          Just pick any box. <br/><br/>
+        <h2 role="img" aria-label="sparkles">✨</h2>
+          Just pick any box. <h2 role="img" aria-label="box">📦</h2>
           You are provided with 8 random (maybe exciting) wikipedia articles. <br/><br/>
           When you click on one, you are given 8 random articles from the links the article contains.<br/><br/>
           Click on the Open in Wikipedia button at any time to save it in a new tab. Let’s see how far the rabbithole goes.<br/><br/>
           <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton}>
-            Shuffle
+          <h2 role="img" aria-label="shuffle">🔀</h2><strong>Shuffle</strong>
           </Button>
 
         </Grid>
