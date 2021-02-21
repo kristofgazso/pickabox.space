@@ -6,7 +6,8 @@ import logo from './image/boxIcon.svg';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-modal';
 import AboutModal from './component/AboutModal';
-import LoadingBar from 'react-top-loading-bar'
+import LoadingBar from 'react-top-loading-bar';
+import Scroll from './component/scroll';
 
 
 // Title rotation
@@ -230,7 +231,8 @@ export default function App() {
           </Grid>
         </Grid>
         
-        
+        <Scroll showBelow={50} />
+
         <Grid style={footer} item xs={12}>
             <h3 style={{fontFamily: 'Changa'}}>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">The HAKers</a></h3>
         </Grid>
