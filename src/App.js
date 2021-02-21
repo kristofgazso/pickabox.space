@@ -165,7 +165,7 @@ export default function App() {
         .then((data) => {
           console.log(data, typeof data);
           setArticleData(data.articles);
-          setSubTitles("Article: " + title);
+          setSubTitles(title);
           setId(id);
           setTitleLink(link);
           setReshuffle(true);
