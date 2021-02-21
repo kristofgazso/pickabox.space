@@ -10,7 +10,7 @@ import useLoader from './component/useLoader';
 
 
 // Title rotation
-const words = ["Bored?   ", "Click on a box!", "Read something you like, or Shuffle!"]
+const words = ["Bored?    ", "Pick A Box", "Shuffle, Rabbithole, and Repeat"];
 
 export default function App() {
   
@@ -46,7 +46,12 @@ export default function App() {
 
   const setAboutModalIsOpenToFalse =()=>{
     setModalIsOpen(false)
-}
+  }
+
+  // onHover Events
+  const [isShown, setIsShown] = useState(false);
+
+
 
   // Link Handler
   useEffect(() => {
@@ -130,7 +135,7 @@ export default function App() {
         .then((data) => {
           console.log(data, typeof data);
           setArticleData(data.articles);
-          setSubTitles(title);
+          setSubTitles("Article: " + title);
           setId(id);
           setTitleLink(link);
           setReshuffle(true);
@@ -172,24 +177,29 @@ export default function App() {
           <Grid item xs={12} style={pageTitle}>
           {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
           </Grid>
+          
           <Grid item xs={12} style={subTitleStyle} onClick={() => titleClick(titleLink)} className='subTitle'>{subTitle}</Grid>
         </Grid>
         <Grid item container xs={12} sm={2} style={{position: 'relative'}}>
           <Grid item xs={12} style={pageIntro}> 
             
             <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton} className='restartButton'>
-              <h2 role="img" aria-label="shuffle">🔀</h2><strong>Shuffle</strong>
+             <strong>Shuffle</strong>
             </Button>
-            <br/><br/>
-            {reShuffle ? <Button variant="primary" size="lg" onClick={() => reDigHandler(titleId)} style={restartButton} className='restartButton'>
-                            <h2 role="img" aria-label="reshuffle">🔀</h2><strong>Re-Shuffle</strong>
+            <br/>
+            {reShuffle ? <Button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} variant="primary" size="lg" onClick={() => reDigHandler(titleId)} style={restartButton} className='restartButton'>
+                            <strong>Re-Shuffle</strong>
                           </Button> : null}
-            {/* <Button variant="primary" size="lg" onClick={() => reDigHandler(titleId)} style={restartButton} className='restartButton'>
-              <h2 role="img" aria-label="reshuffle"></h2><strong>Box-Shuffle</strong>
-            </Button> */}
-            <br/><br></br>
-            <Button variant="primary" size="lg" onClick={setAboutModalIsOpenToTrue} style={restartButton}>
-            <h2 role="img" aria-label="about">📚</h2><strong>About</strong>
+
+                        {isShown && (
+                    <div style={{margin:'auto'}}>
+                      <p><em>Shuffles within this article.</em></p>
+                    </div>
+                  )}
+
+            <br></br>
+            <Button variant="primary" size="lg" onClick={setAboutModalIsOpenToTrue} style={restartButton} className='restartButton'>
+            <strong>About</strong>
             </Button>
 
             <Modal isOpen={modalIsOpen}>
@@ -227,7 +237,7 @@ const subTitleStyle={
   fontWeight: 'bold',
   fontSize: '35px',
   lineHeight: 'normal',
-  marginBottom: '20px',
+  marginBottom: '10px',
   cursor: 'pointer',
   /* or 71% */
 
@@ -247,6 +257,8 @@ const pageTitle={
   marginTop: '20px',
   margin:'auto',
   justifyContent: 'center',
+  marginTop: '5px',
+  marginBottom: '10px',
   /* or 71% */
 
   display: 'flex',
