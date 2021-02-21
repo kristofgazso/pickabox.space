@@ -2,11 +2,10 @@ import './App.css';
 import InfoBox from './component/InfoBox';
 import Grid from '@material-ui/core/Grid';
 import React, { useState, useEffect, useRef } from 'react';
-import logo from './image/boxIcon.png';
+import logo from './image/boxIcon.svg';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-modal';
 import AboutModal from './component/AboutModal';
-import useLoader from './component/useLoader';
 import LoadingBar from 'react-top-loading-bar'
 
 
@@ -146,7 +145,7 @@ export default function App() {
     return (event) => {
       ref.current.continuousStart();
 
-      if(history.length < 5){
+      if(history.length < 10){
         let temp = history;
         temp.unshift({id: id, title: title});
       }
@@ -177,7 +176,7 @@ export default function App() {
 
   const renderHistory = (history, index) => {
     return(
-      <Grid item xs={12} key={index} onClick={()=> reDigHandler(history.id, history.title)} style={historyEntry} className='historyTags'>{history.title}</Grid>
+      <Grid item xs={12} key={index} onClick={()=> reDigHandler(history.id, history.title)} style={historyEntry} className='historyTags'><li>{history.title}</li></Grid>
     )
   }
   return (
@@ -204,12 +203,11 @@ export default function App() {
             {reShuffle ? <Button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} variant="primary" size="lg" onClick={() => reDigHandler(titleId, subTitle)} style={restartButton} className='restartButton'>
                             <strong>Find more boxes</strong>
                           </Button>: null}
+            {!reShuffle ? <Button onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} variant="primary" size="lg" style={restartButtonInactive} className='restartButton'>
+                            <strong>Find more boxes</strong>
+                          </Button>: null}
 
-                        {isShown && (
-                    <div style={{textAlign: 'center'}}>
-                      <p style={subText}><em>Shuffles within this article.</em></p>
-                    </div>
-                  )}
+            <h3 style={subText}>Shuffle within this article</h3>
             <br/>
             <Button variant="primary" size="lg" onClick={setAboutModalIsOpenToTrue} style={restartButton} className='restartButton'>
               <strong>About</strong>
@@ -222,7 +220,7 @@ export default function App() {
             <br/>
             <Grid item xs={12} style={historyGrid}>
               <h4 style={{font:'14px', marginBottom: '7px', fontFamily: 'Georgia',}}>Rabbithole History:</h4>
-              {history && history.map(renderHistory)}
+              <ul>{history && history.map(renderHistory)}</ul>
             </Grid>
           </Grid>
           <br/>
@@ -263,7 +261,7 @@ const subTitleStyle={
   alignItems: 'center',
   textAlign: 'center',
   transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
-  color: '#000000',
+  color: '#222222',
   justifyContent: 'center',
 }
 const pageTitle={
@@ -282,12 +280,13 @@ const pageTitle={
   alignItems: 'center',
   textAlign: 'center',
 
-  color: '#000000'
+  color: '#222222'
 }
 
 const pageIcon={
-  margin: '10px',
-  height: '100px',
+  margin: 'auto',
+  padding: 'auto',
+  height: 'auto',
   width:'auto',
   left: '10px',
   float: 'left'
@@ -309,6 +308,26 @@ const restartButton={
   cursor:'pointer',
 
   background: '#2565AE',
+  borderRadius: '5px',
+  borderColor: 'transparent',
+  color: '#fff',
+  transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
+  margin: 'auto',
+}
+
+const restartButtonInactive={
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '0px 16px',
+
+  // position: 'absolute',
+  width: '133px',
+  height: '34px',
+  cursor:'pointer',
+
+  background: '#B9ADAD',
   borderRadius: '5px',
   borderColor: 'transparent',
   color: '#fff',

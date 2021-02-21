@@ -69,7 +69,7 @@ Pickabox, an automatic organizer and random generator of wikis upon wikis, is a 
       <a href="https://github.com/kristofgazso">
         <img src="https://avatars.githubusercontent.com/u/17406948?s=460&u=f66d1c6ba22b18b60de9bf749a550a1d342f42a6&v=4" width="75px;" alt="Kristof"/><br />
         <sub>
-          <b>Kristof Gazsco</b>
+          <b>Kristof Gazso</b>
           <br>
           <p><a href="https://linkedin.com/in/kristofgazso">LinkedIn</a></p>
           <p>Back End Support / UI/UX Designer</p>
