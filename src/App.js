@@ -215,7 +215,7 @@ export default function App() {
             {articleData && articleData.map(renderBox)}
         </Grid>
         <Grid style={footer} item xs={12}>
-            <h3>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">The HAKers</a></h3>
+            <h3>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">The HAKeRs</a></h3>
         </Grid>
       </Grid>
       {loader}
