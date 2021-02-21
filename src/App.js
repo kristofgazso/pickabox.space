@@ -4,42 +4,78 @@ import InfoBox from './component/InfoBox';
 import Grid from '@material-ui/core/Grid';
 // import Fetch from './Fetch';
 
-function App() {
-  const boxes = [
-    {image: "https://upload.wikimedia.org/wikipedia/commons/a/ad/A_coloured_voting_box_%28no_bg%29.svg",
-      title: "Republic",
-      text: 'A republic (Latin: res publica, meaning "public affair") is a form of government in which "power is held by the people and their elected representatives".[1] In republics, the country is considered a "public matter", not the private concern or property of the rulers. The primary positions of power within a republic are attained through democracy or a mix of democracy with oligarchy or autocracy rather than being unalterably occupied by any given family lineage or group. With modern republicanism, it has become the opposing form of government to a monarchy and therefore a modern republic has no monarch as head of state.',
-      link: "https://en.wikipedia.org/wiki/Republic"
-    },
-    {image: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Cowgirl_Creamery_Point_Reyes_-_Red_Hawk_cheese.jpg",
-      title: "Cheese",
-      text: "Cheese is a dairy product, derived from milk and produced in wide ranges of flavors, textures and forms by coagulation of the milk protein casein. It comprises proteins and fat from milk, usually the milk of cows, buffalo, goats, or sheep. During production, the milk is usually acidified and the enzymes of rennet (or bacterial enzymes with similar activity) are added to cause the milk proteins (casein) to coagulate. The solids (curd) are separated from the liquid (whey) and pressed into final form.[1] Some cheeses have aromatic molds on the rind, the outer layer, or throughout. Most cheeses melt at cooking temperature.",
-      link: "https://en.wikipedia.org/wiki/Cheese"
-    },
-    {image: "https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg",
-      title: "NASA",
-      text: "The National Aeronautics and Space Administration (NASA; /ˈnæsə/) is an independent agency of the U.S. federal government responsible for the civilian space program, as well as aeronautics and space research.[note 1]",
-      link: "https://en.wikipedia.org/wiki/NASA"
-    },
-    {
-      image: "https://upload.wikimedia.org/wikipedia/en/c/c2/Amongus_wordmark.svg",
-      title: "Among Us",
-      text: "Among Us[d] is an online multiplayer social deduction game developed and published by American game studio Innersloth. It was released on iOS and Android devices in June 2018 and on Windows in November 2018, featuring cross-platform play between these platforms.[14] Among Us' first port was macOS, releasing on the software on November 16, 2020. The game was also released on the Nintendo Switch in December 2020, and has planned releases for the Xbox One and Xbox Series X and Series S in 2021.",
-      link: "https://en.wikipedia.org/wiki/Among_Us"
-    },
-    {
-      image: "https://upload.wikimedia.org/wikipedia/en/b/bf/KFC_logo.svg",
-      title: "KFC",
-      text: `KFC (short for Kentucky Fried Chicken[6]) is an American fast food restaurant chain headquartered in Louisville, Kentucky, that specializes in fried chicken. It is the world's second-largest restaurant chain (as measured by sales) after McDonald's, with 22,621 locations globally in 150 countries as of December 2019.[7] The chain is a subsidiary of Yum! Brands, a restaurant company that also owns the Pizza Hut, Taco Bell, and WingStreet chains.`,
-      link: "https://en.wikipedia.org/wiki/KFC"
-    },
-    {
-      image: "https://upload.wikimedia.org/wikipedia/commons/f/f8/Python_logo_and_wordmark.svg",
-      title: "Python (programming language)",
-      text: `Python is an interpreted, high-level and general-purpose programming language. Python's design philosophy emphasizes code readability with its notable use of significant indentation. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.`,
-      link: "https://en.wikipedia.org/wiki/Python_(programming_language)"
-    },
-  ]
+// Title rotation
+const words = ["Welcome to Pickabox.space", "Just pick a box!"]
+
+export default function App() {
+  
+  const [articleData, setArticleData] = useState();
+
+  // States telling words when to index, blink and reverse
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [blink, setBlink] = useState(true);
+  const [reverse, setReverse] = useState(false);
+
+  // Link Handler
+  useEffect(() => {
+    clickHandler();
+  }, []);
+
+  // Type Writer Effect (hz)
+  useEffect(() => {
+    
+    // Check done typing all words
+    if (index === words.length) return;
+
+    // Checks if need to reverse, otherwise no
+    if ( subIndex === words[index].length + 1 && 
+        index !== words.length - 1 && !reverse ) {
+      setReverse(true);
+      return;
+    }
+
+    // keeps going to if sub index is 0
+    if (subIndex === 0 && reverse) {
+      setReverse(false);
+      setIndex((prev) => prev + 1);
+      return;
+    }
+
+    // time delay between reverse and typing itself
+    const timeout = setTimeout(() => {
+      setSubIndex((prev) => prev + (reverse ? -1 : 1));
+    }, Math.max(reverse ? 75 : subIndex === words[index].length ? 400 :
+                150, parseInt(Math.random() * 350)));
+  
+    return () => clearTimeout(timeout);
+}, [subIndex, index, reverse]);
+
+
+  // blinker and time delay
+  useEffect(() => {
+    const timeout2 = setTimeout(() => {
+      setBlink((prev) => !prev);
+    }, 500);
+    return () => clearTimeout(timeout2);
+  }, [blink]);
+    const clickHandler = (e) => {
+
+    // Using cors-anywhere proxy to scrape the data on wikipedia
+    fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space")
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data, typeof data);
+        setArticleData(data.articles);
+      });
+  };
+  var currentTitle = 'Welcome to pickabox.space';
+  const digHandler  = (title) => {
+      return (event) => {
+        console.log('I am fetching this link', title);
+        currentTitle = title;
+      }
+  }
 
   const renderBox = (box, index) => {
     return(
@@ -48,13 +84,78 @@ function App() {
   }
   return (
     <div className="App">
-      <Grid container spacing={3} justify="flex-end">
-          {boxes.map(renderBox)}
-          <Fetch />
+      <Grid container spacing={3} xs={12} justify="flex-end" >
+        <Grid item xs={12} sm={5}>
+          <img style={pageIcon} src={logo} alt="Logo" />
+        </Grid>
+        <Grid item xs={12} sm={7} style={pageTitle}>
+          Hello! {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
+        </Grid>
+        <Grid item xs={12} sm={2} style={pageIntro}>
+          Just pick any box. <br/><br/>
+          You are provided with 8 random (maybe exciting) wikipedia articles. <br/><br/>
+          When you click on one, you are given 8 random articles from the links the article contains.<br/><br/>
+          Click on the Open in Wikipedia button at any time to save it in a new tab. Let’s see how far the rabbithole goes.<br/><br/>
+          <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton}>
+            Start Over
+          </Button>
+
+        </Grid>
+        <Grid container item xs={12} sm={10} spacing={5} justify="flex-end" style={boxGrid}>
+            {articleData && articleData.map(renderBox)}
+        </Grid>
       </Grid>
       
     </div>
   );
 }
 
-export default App;
+const pageTitle={
+  fontFamily: 'Roboto',
+  fontStyle: 'normal',
+  fontWeight: 'bold',
+  fontSize: '48px',
+  lineHeight: '34px',
+  marginTop: '20px',
+  marginBottom: '20px',
+  /* or 71% */
+
+  display: 'flex',
+  alignItems: 'center',
+  textAlign: 'center',
+
+  color: '#000000'
+}
+
+const pageIcon={
+  margin: '10px',
+  height: '100px',
+  width:'auto',
+  left: '30px',
+  float: 'left'
+}
+const pageIntro={
+  textAlign: 'left',
+}
+
+const restartButton={
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '0px 16px',
+
+  // position: 'absolute',
+  width: '133px',
+  height: '34px',
+  cursor:'pointer',
+
+  background: '#074EE8',
+  borderRadius: '48px',
+  borderColor: 'transparent',
+  color: '#fff',
+}
+
+const boxGrid={
+  border: '5px'
+}
