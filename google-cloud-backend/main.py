@@ -33,8 +33,12 @@ def parse_json_for_articles(json):
     #print(articles)
     # Removes the two articles which have the shortest lengths
     articles = sorted(articles, key=lambda k: len(k.get('extract')), reverse=True)
-    articles.pop()
-    articles.pop()
+    if len(articles) > 8:
+        articles.pop()
+    if len(articles) > 8:
+        articles.pop()
+
+    random.shuffle(articles)
     return articles
 
 
@@ -70,7 +74,7 @@ def main(request):
 
             if len(titles):
                 random.shuffle(titles)
-                cat_string = "%7C".join(titles[:8])
+                cat_string = "%7C".join(titles[:10])
                 search_url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts%7Cinfo&list=&titles="+cat_string+"&redirects=1&exlimit=max&exintro=1&explaintext=1&inprop=url%7Cdisplaytitle"
                 search_res = requests.get(search_url).json()
 

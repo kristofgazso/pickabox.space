@@ -1,18 +1,22 @@
 import './App.css';
 import InfoBox from './component/InfoBox';
 import Grid from '@material-ui/core/Grid';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import logo from './image/boxIcon.png';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-modal';
 import AboutModal from './component/AboutModal';
 import useLoader from './component/useLoader';
+import LoadingBar from 'react-top-loading-bar'
 
 
 // Title rotation
 const words = ["Bored?    ", "Pick A Box", "Shuffle, Rabbithole, and Repeat"];
 
 export default function App() {
+
+  // Loading progress bar
+  const ref = useRef(null);
   
   const [articleData, setArticleData] = useState();
 
@@ -35,9 +39,6 @@ export default function App() {
   // State showing whether reshuffle button exist or not
   const [reShuffle, setReshuffle] = useState(false);
 
-  // Spinning screen for loading
-  const [loader, showLoader, hideLoader] = useLoader();
-  
 
   // About Modal
   const setAboutModalIsOpenToTrue = () => {
@@ -96,7 +97,7 @@ export default function App() {
   }, [blink]);
 
     const clickHandler = (e) => {
-      showLoader();
+      ref.current.continuousStart();
     // Using cors-anywhere proxy to scrape the data on wikipedia
     fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space")
       .then((resp) => resp.json())
@@ -104,7 +105,7 @@ export default function App() {
         console.log(data, typeof data);
         setArticleData(data.articles);
         setSubTitles('');
-        hideLoader();
+        ref.current.complete();
         setReshuffle(false);
       });
 
@@ -117,19 +118,19 @@ export default function App() {
   }
 
   const reDigHandler = (id) =>{
-    showLoader();
+    ref.current.continuousStart();
       fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space?id=" + id)
         .then((resp) => resp.json())
         .then((data) => {
           setArticleData(data.articles);
-          hideLoader();
+          ref.current.complete();
     });
   }
   
   const digHandler = (title, id, link) => {
     return (event) => {
       console.log('I am fetching this link', title);
-      showLoader();
+      ref.current.continuousStart();
       fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space?id=" + id)
         .then((resp) => resp.json())
         .then((data) => {
@@ -139,7 +140,7 @@ export default function App() {
           setId(id);
           setTitleLink(link);
           setReshuffle(true);
-          hideLoader();
+          ref.current.complete();
       });
     }
   }
@@ -168,6 +169,7 @@ export default function App() {
   }
   return (
     <div className="App">
+    <LoadingBar color='#222222' ref={ref} />
 
       <Grid container spacing={3} xs={12} justify="flex-end" >
         <Grid item xs={12} sm={3}>
@@ -218,7 +220,6 @@ export default function App() {
             <h3>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">The HAKeRs</a></h3>
         </Grid>
       </Grid>
-      {loader}
     </div>
   );
 }
