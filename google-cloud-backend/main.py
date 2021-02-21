@@ -79,7 +79,8 @@ def main(request):
 
                 articles = parse_json_for_articles(search_res)
                 return {"articles": articles}
-            else: {"articles": [{"title": "No articles found", "extract": "Click the start over button to try again"}]}
+            else: 
+                return {"articles": [{"title": "No articles found", "extract": "Click the start over button to try again"}]}
         else:
             return {"articles": [{"title": "No articles found", "extract": "Click the start over button to try again"}]}
 
