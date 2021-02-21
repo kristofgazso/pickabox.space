@@ -21,7 +21,7 @@ const InfoBox = (props) => {
           </Card.Text>
         </Card.Body>
         <Button style={wikiButton} onClick={() => handleClick(props.data.url)}>
-          <span>Open Wiki</span></Button>
+          <span>Save</span></Button>
       </Card>
     </Grid>
   )

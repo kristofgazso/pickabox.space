@@ -4,9 +4,10 @@ import Grid from '@material-ui/core/Grid';
 import React, { useState, useEffect } from 'react';
 import logo from './image/boxIcon.png';
 import Button from 'react-bootstrap/Button';
+// import Modal from './component/Modal';
 
 // Title rotation
-const words = ["Welcome to Pickabox.space", "Just pick a box!"]
+const words = ["Curious about something?", "Click on a box!", "Save something you like!"]
 
 export default function App() {
   
@@ -72,14 +73,10 @@ export default function App() {
 
     
   };
-  document.title = 'Welcome to pickabox.space';
   var currentTitle = 'Welcome to pickabox.space';
   
   const digHandler = (title, id) => {
     return (event) => {
-      console.log('I am fetching this link', title);
-      document.title = title;
-      console.log(document.title)
 
       fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space?id=" + id)
         .then((resp) => resp.json())
@@ -89,6 +86,22 @@ export default function App() {
         });
       }
   }
+
+  // const aboutHandler = () => {
+  //   return (event) => {
+  //     this.showModal();
+
+  //   }
+  // }
+
+  // state = {
+  //   show: false
+  // };
+  // showModal = e => {
+  //   this.setState({
+  //     show: true
+  //   });
+  // };
 
   const renderBox = (box, index) => {
     return(
@@ -102,18 +115,23 @@ export default function App() {
           <img href="/" style={pageIcon} src={logo} alt="Logo" />
         </Grid>
         <Grid item xs={12} sm={7} style={pageTitle}>
-          Hi! {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
+          {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
         </Grid>
         <Grid item xs={12} sm={2} style={pageIntro}>
-        <h2 role="img" aria-label="sparkles">✨</h2>
-          Just pick any box. <h2 role="img" aria-label="box">📦</h2>
-          You are provided with 8 random (maybe exciting) informational articles. <br/><br/>
-          When you click on one, you are given 8 random articles from the links the article contains.<br/><br/>
-          Click on the Open in Wikipedia button at any time to save it in a new tab. Let’s see how far the rabbithole goes.<br/><br/>
           <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton}>
           <h2 role="img" aria-label="shuffle">🔀</h2><strong>Shuffle</strong>
           </Button>
+          <br></br>
+          {/* <Button variant="primary" size="lg" onClick={aboutHandler} style={restartButton}>
+          <h2 role="img" aria-label="about">🔀</h2><strong>About</strong>
+          </Button> */}
+          
+          
+          <Grid style={footer} item xs={10} sm={20}>
+          <h3>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">Team Placeholder</a></h3>
 
+          </Grid>
+          
         </Grid>
         <Grid container item xs={12} sm={10} spacing={4} justify="flex-end" style={boxGrid}>
             {articleData && articleData.map(renderBox)}
@@ -123,6 +141,12 @@ export default function App() {
   );
 }
 
+const footer = {
+  fontWeight:'bold',
+  fontSize: '12px',
+  height:'100%',
+  paddingTop: '300%'
+}
 const pageTitle={
   fontFamily: 'Roboto',
   fontStyle: 'normal',
