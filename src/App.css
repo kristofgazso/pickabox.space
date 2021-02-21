@@ -69,3 +69,7 @@
 .historyTags:hover{
   transform: scale(1.05, 1.05);
 }
+
+.restartButton strong{
+  font-family: 'Changa';
+}

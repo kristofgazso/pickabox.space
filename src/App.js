@@ -183,7 +183,7 @@ export default function App() {
     <div className="App">
     <LoadingBar color='#2565AE' ref={ref} />
 
-      <Grid container item spacing={3} xs={12} justify="flex-end" >
+      <Grid container item spacing={3} xs={12} justify="flex-end" style={{position: 'absolute'}}>
         <Grid item xs={12} sm={2}>
           <img style={pageIcon} src={logo} alt="Logo" />
         </Grid>
@@ -231,7 +231,7 @@ export default function App() {
             {articleData && articleData.map(renderBox)}
         </Grid>
         <Grid style={footer} item xs={12}>
-            <h3 style={{fontFamily: 'Didot'}}>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">The HAKers</a></h3>
+            <h3 style={{fontFamily: 'Changa'}}>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">The HAKers</a></h3>
         </Grid>
       </Grid>
     </div>
@@ -289,7 +289,7 @@ const pageIcon={
   height: 'auto',
   width:'auto',
   left: '10px',
-  float: 'left'
+  position: 'relative'
 }
 const pageIntro={
   textAlign: 'left',
