@@ -208,13 +208,14 @@ export default function App() {
             </Modal>
           </Grid>
           <br/>
-          <Grid style={footer} item xs={12}>
-            <h3>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">Team Placeholder</a></h3>
-          </Grid>
+          
           
         </Grid>
         <Grid container item xs={12} sm={10} spacing={4} justify="flex-end" style={boxGrid}>
             {articleData && articleData.map(renderBox)}
+        </Grid>
+        <Grid style={footer} item xs={12}>
+            <h3>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">The HAKers</a></h3>
         </Grid>
       </Grid>
       {loader}
@@ -228,8 +229,7 @@ const footer = {
   fontSize: '12px',
   height:'50px',
   bottom: '10px',
-  left:'25px',
-  position: 'absolute',
+  position: 'relative',
 }
 
 const subTitleStyle={
