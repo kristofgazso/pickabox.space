@@ -12,22 +12,23 @@ const InfoBox = (props) => {
   }
 
   return (
-    <Grid container item xs={12} md={6} lg={3} spacing={2}>
-      <Card style={box}>
+    <Grid container item xs={12} sm={6} md={4} lg={3} spacing={2}>
+      <Card style={box} className='wikiBox shadow-box-example hoverable'>
         <Card.Title style={boxTitle}>{props.data.title}</Card.Title>
-        <Card.Body style={boxBody} onClick={props.dig(props.data.title)}>
+        <Card.Body style={boxBody} onClick={props.dig(props.data.title)} >
           <Card.Text>
             {props.data.extract}
           </Card.Text>
         </Card.Body>
-        <Button style={wikiButton} onClick={() => handleClick('https://en.wikipedia.org/wiki/' + props.data.title)}>Open Wiki</Button>
+        <Button style={wikiButton} onClick={() => handleClick('https://en.wikipedia.org/wiki/' + props.data.title)}>
+          <span>Open Wiki</span></Button>
       </Card>
     </Grid>
   )
 }
 const boxBody={
   // overflowY: 'scroll',
-  minHeight: '60%',
+  // minHeight: '60%',
   maxWidth: '400px',
   cursor:'pointer',
   fontFamily: 'Open Sans',
@@ -45,7 +46,8 @@ const box={
   color: 'black',
   position: 'relative',
   border: '.2rem solid #ececec',
-  boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.25)',
+  transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
+  // boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.25)',
   borderRadius: '5px',
   background: '#F8F8F8',
   overflow: 'hidden',
