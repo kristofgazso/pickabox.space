@@ -231,7 +231,7 @@ export default function App() {
             {articleData && articleData.map(renderBox)}
         </Grid>
         <Grid style={footer} item xs={12}>
-            <h3>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">The HAKers</a></h3>
+            <h3 style={{fontFamily: 'Didot'}}>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">The HAKers</a></h3>
         </Grid>
       </Grid>
     </div>
@@ -248,7 +248,7 @@ const footer = {
 }
 
 const subTitleStyle={
-  fontFamily: 'Roboto',
+  fontFamily: 'Changa',
   fontStyle: 'normal',
   fontWeight: 'bold',
   fontSize: '35px',
@@ -265,7 +265,7 @@ const subTitleStyle={
   justifyContent: 'center',
 }
 const pageTitle={
-  fontFamily: 'Roboto',
+  fontFamily: 'Changa',
   fontStyle: 'normal',
   fontWeight: 'bold',
   fontSize: '48px',
@@ -347,7 +347,7 @@ const historyEntry={
 }
 
 const historyGrid={
-  fontFamily: 'Roboto',
+  fontFamily: 'Open Sans',
   fontStyle: 'normal',
   marginLeft: '15px',
 }

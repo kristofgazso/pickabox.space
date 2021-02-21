@@ -77,17 +77,5 @@ Pickabox, an automatic organizer and random generator of wikis upon wikis, is a 
       </a>
       <br/>
     </td>
-     <td align="center"><a href="https://github.com/Rojanmhj2055">
-       <img src="https://avatars.githubusercontent.com/u/36452547?s=460&u=836efbf277625f4c58f3858de3d1dca45f10ca97&v=4" width="75px;" alt="Rozan"/>
-       <br />
-       <sub>
-         <b>Rozan Mhrzn</b>
-         <br>
-          <p><a href="https://linkedin.com/in/rozan-mhrzn-203561180">LinkedIn</a></p>
-          <p>Supporting Developer</p>
-       </sub>
-       </a>
-       <br/>
-    </td>
     </tr>  
 </table>
