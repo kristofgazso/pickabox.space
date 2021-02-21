@@ -107,7 +107,7 @@ export default function App() {
         <Grid item xs={12} sm={2} style={pageIntro}>
         <h2 role="img" aria-label="sparkles">✨</h2>
           Just pick any box. <h2 role="img" aria-label="box">📦</h2>
-          You are provided with 8 random (maybe exciting) wikipedia articles. <br/><br/>
+          You are provided with 8 random (maybe exciting) informational articles. <br/><br/>
           When you click on one, you are given 8 random articles from the links the article contains.<br/><br/>
           Click on the Open in Wikipedia button at any time to save it in a new tab. Let’s see how far the rabbithole goes.<br/><br/>
           <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton}>
