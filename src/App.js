@@ -1,9 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 import InfoBox from './component/InfoBox';
 import Grid from '@material-ui/core/Grid';
-// import Fetch from './Fetch';
+import React, { useState, useEffect } from 'react';
+import logo from './image/boxIcon.png';
+import Button from 'react-bootstrap/Button';
 
+<<<<<<< HEAD
 // Title rotation
 const words = ["Welcome to Pickabox.space", "Just pick a box!"]
 
@@ -60,6 +62,17 @@ export default function App() {
     return () => clearTimeout(timeout2);
   }, [blink]);
     const clickHandler = (e) => {
+=======
+function App() {
+  
+  const [articleData, setArticleData] = useState();
+  useEffect(() => {
+    // do whatever
+    clickHandler();
+  }, []);
+
+  const clickHandler = (e) => {
+>>>>>>> 97d0684f97d3aa3eee3c76e2b95376153916da82
 
     // Using cors-anywhere proxy to scrape the data on wikipedia
     fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space")
@@ -76,10 +89,17 @@ export default function App() {
         currentTitle = title;
       }
   }
+<<<<<<< HEAD
+=======
+
+  console.log(articleData);
+
+
+>>>>>>> 97d0684f97d3aa3eee3c76e2b95376153916da82
 
   const renderBox = (box, index) => {
     return(
-      <InfoBox data={box} key={index}></InfoBox>
+      <InfoBox data={box} key={index} dig={digHandler}></InfoBox>
     )
   }
   return (
@@ -88,9 +108,13 @@ export default function App() {
         <Grid item xs={12} sm={5}>
           <img style={pageIcon} src={logo} alt="Logo" />
         </Grid>
+<<<<<<< HEAD
         <Grid item xs={12} sm={7} style={pageTitle}>
           Hello! {`${words[index].substring(0, subIndex)}${blink ? "|" : " "}`}
         </Grid>
+=======
+        <Grid item xs={12} sm={7} style={pageTitle}>{currentTitle}</Grid>
+>>>>>>> 97d0684f97d3aa3eee3c76e2b95376153916da82
         <Grid item xs={12} sm={2} style={pageIntro}>
           Just pick any box. <br/><br/>
           You are provided with 8 random (maybe exciting) wikipedia articles. <br/><br/>
@@ -105,7 +129,6 @@ export default function App() {
             {articleData && articleData.map(renderBox)}
         </Grid>
       </Grid>
-      
     </div>
   );
 }
@@ -159,3 +182,7 @@ const restartButton={
 const boxGrid={
   border: '5px'
 }
+<<<<<<< HEAD
+=======
+export default App;
+>>>>>>> 97d0684f97d3aa3eee3c76e2b95376153916da82
