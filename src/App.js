@@ -180,7 +180,7 @@ export default function App() {
           
           <Grid item xs={12} style={subTitleStyle} onClick={() => titleClick(titleLink)} className='subTitle'>{subTitle}</Grid>
         </Grid>
-        <Grid item container xs={12} sm={2} style={{position: 'relative'}}>
+        <Grid item container xs={12} sm={2} style={{position: 'relative', minHeight: '220px'}}>
           <Grid item xs={12} style={pageIntro}> 
             
             <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton} className='restartButton'>
@@ -207,7 +207,7 @@ export default function App() {
                 <AboutModal/>
             </Modal>
           </Grid>
-          
+          <br/>
           <Grid style={footer} item xs={12}>
             <h3>Created by <a target="_blank" href="https://github.com/kristofgazso/pickabox.space">Team Placeholder</a></h3>
           </Grid>
@@ -226,8 +226,9 @@ export default function App() {
 const footer = {
   fontWeight:'bold',
   fontSize: '12px',
-  height:'auto',
-  bottom: '0',
+  height:'50px',
+  bottom: '10px',
+  left:'25px',
   position: 'absolute',
 }
 
@@ -300,5 +301,6 @@ const restartButton={
 }
 
 const boxGrid={
-  border: '5px'
+  border: '5px',
+  margin: '0px'
 }
