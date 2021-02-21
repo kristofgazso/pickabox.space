@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h3 align="center">Pickabox, a tool for creativity</h3>
+  <h3 align="center">Pickabox, a wiki upon wikis</h3>
   <h4 align="center"><a target="_blank" href="http://pickabox.space">Official Website: pickabox.space</a></h4>
 
   <p align="center">
