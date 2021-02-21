@@ -1,25 +1,23 @@
 import requests
 import random
 
+# This function is hosted on Google Cloud Functions, callable through 
+# https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space
+
+# If you want to query for articles related to a specific article through links, call
+# https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space?id=ID_OF_ARTICLE
+
 def parse_json_for_articles(json):
     pages = json.get("query").get("pages")
     articles = []
+
+    # Parse the json given by Wikipedia and transform it for our use
     for current_page in pages:
         article = {}
         page = pages.get(current_page)
 
-        #if page.get("extract"):
         extract = page.get("extract", "")
         article["extract"] = extract
-
-        '''
-        if page.get("links"):
-            links = []
-            for link in page.get("links"):
-                link_title = link.get("title")
-                links.append(link_title)
-            article["links"] = links
-        '''
         
         title = page.get("title")
         url = page.get("fullurl")
@@ -30,7 +28,7 @@ def parse_json_for_articles(json):
         article["id"] = id
         articles.append(article)
 
-    #print(articles)
+
     # Removes the two articles which have the shortest lengths
     articles = sorted(articles, key=lambda k: len(k.get('extract')), reverse=True)
     if len(articles) > 8:
@@ -42,8 +40,6 @@ def parse_json_for_articles(json):
     return articles
 
 
-
-
 def main(request):
     """Responds to any HTTP request.
     Args:
@@ -52,30 +48,33 @@ def main(request):
         The response text or any set of values that can be turned into a
         Response object using
         `make_response <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>`.
-    """
-    request_json = request.get_json()
-    
+    """    
+
+    # If the user queries for articles related to the one they clicked
     if request.args and 'id' in request.args:
         id = request.args.get("id")
 
+        # Get the links that are included in the article that is queried
         wiki_url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=links&list=&continue=&pageids="+str(id)+"&plnamespace=0&pllimit=max"
         res = requests.get(wiki_url).json()
         pages = res.get("query").get("pages")
         page = pages.get(str(id))
         if page:
             links = page.get('links')
+
+            # Get title of the articles whose links were queried
             titles = []
             if links:
                 for link in links:
                     title = link.get("title")
                     titles.append(title)
 
-
-
+            # Get the articles for each title that we have listed if there is any
             if len(titles):
+                # Make selection random
                 random.shuffle(titles)
                 cat_string = "%7C".join(titles[:10])
-                search_url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts%7Cinfo&list=&titles="+cat_string+"&redirects=1&exlimit=max&exintro=1&explaintext=1&inprop=url%7Cdisplaytitle"
+                search_url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts%7Cinfo&list=&titles="+cat_string+"&redirects=1&exlimit=max&exintro=1&explaintext=1&inprop=url"
                 search_res = requests.get(search_url).json()
 
                 articles = parse_json_for_articles(search_res)
@@ -84,17 +83,11 @@ def main(request):
         else:
             return {"articles": [{"title": "No articles found", "extract": "Click the start over button to try again"}]}
 
+    # If they query for random articles
     else:
-        wiki_url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts%7Clinks%7Cinfo&generator=random&redirects=1&exlimit=max&exintro=1&explaintext=1&exsectionformat=plain&excontinue=1&plnamespace=0&pllimit=500&inprop=url%7Cdisplaytitle&intestactions=&grnnamespace=0&grnfilterredir=nonredirects&grnlimit=10"
+        # Get 10 random articles, including the introductory extract, urls, titles
+        wiki_url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts%7Cinfo&generator=random&redirects=1&exlimit=max&exintro=1&explaintext=1&exsectionformat=plain&excontinue=1&inprop=url&intestactions=&grnnamespace=0&grnfilterredir=nonredirects&grnlimit=10"
         res = requests.get(wiki_url).json()
         articles = parse_json_for_articles(res)
-
         return {"articles": articles}
-    if request.args and 'message' in request.args:
-        return request.args.get('message')
-    elif request_json and 'message' in request_json:
-        return request_json['message']
-    else:
-        #return f'Hello World!'
-        return request.args
 
