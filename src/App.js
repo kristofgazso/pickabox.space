@@ -289,7 +289,7 @@ const pageIcon={
   height: 'auto',
   width:'auto',
   left: '10px',
-  float: 'left'
+  position: 'relative'
 }
 const pageIntro={
   textAlign: 'left',
