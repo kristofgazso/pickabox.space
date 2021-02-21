@@ -61,7 +61,7 @@ Pickabox, an automatic organizer and random generator of wikis upon wikis, is a 
         <b>Abraham Wong</b>
         <br>
           <p><a href="https://linkedin.com/in/abraham-wong-wy">LinkedIn</a></p>
-          <p>Front End Support</p>
+          <p>Full Stack Support</p>
       </sub></a>
       <br/>
     </td>
