@@ -180,7 +180,7 @@ export default function App() {
           
           <Grid item xs={12} style={subTitleStyle} onClick={() => titleClick(titleLink)} className='subTitle'>{subTitle}</Grid>
         </Grid>
-        <Grid item container xs={12} sm={2} style={{position: 'relative', minHeight: '220px'}}>
+        <Grid item container xs={12} sm={2} style={{position: 'relative'}}>
           <Grid item xs={12} style={pageIntro}> 
             
             <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton} className='restartButton'>
@@ -192,14 +192,14 @@ export default function App() {
                           </Button> : null}
 
                         {isShown && (
-                    <div style={{margin:'auto'}}>
+                    <div style={{textAlign: 'center'}}>
                       <p><em>Shuffles within this article.</em></p>
                     </div>
                   )}
 
             <br></br>
             <Button variant="primary" size="lg" onClick={setAboutModalIsOpenToTrue} style={restartButton} className='restartButton'>
-            <strong>About</strong>
+              <strong>About</strong>
             </Button>
 
             <Modal isOpen={modalIsOpen}>
@@ -245,7 +245,7 @@ const subTitleStyle={
   display: 'flex',
   alignItems: 'center',
   textAlign: 'center',
-
+  transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
   color: '#000000',
   justifyContent: 'center',
 }
