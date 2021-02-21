@@ -210,6 +210,7 @@ export default function App() {
                       <p style={subText}><em>Shuffles within this article.</em></p>
                     </div>
                   )}
+            <br/>
             <Button variant="primary" size="lg" onClick={setAboutModalIsOpenToTrue} style={restartButton} className='restartButton'>
               <strong>About</strong>
             </Button>
