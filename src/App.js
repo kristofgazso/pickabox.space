@@ -24,6 +24,10 @@ export default function App() {
   const [reverse, setReverse] = useState(false);
   const [subTitle, setSubTitles] = useState('');
   const [titleLink, setTitleLink] = useState('');
+  const [titleId, setId] = useState('');
+
+  // State showing whether reshuffle button exist or not
+  const [reShuffle, setReshuffle] = useState(false);
   // Spinning screen for loading
   const [loader, showLoader, hideLoader] = useLoader();
   
@@ -78,7 +82,9 @@ export default function App() {
       .then((data) => {
         console.log(data, typeof data);
         setArticleData(data.articles);
+        setSubTitles('');
         hideLoader();
+        setReshuffle(false);
       });
 
     
@@ -88,9 +94,18 @@ export default function App() {
     window.open(link);
     window.focus();
   }
+
+  const reDigHandler = (id) =>{
+    showLoader();
+      fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space?id=" + id)
+        .then((resp) => resp.json())
+        .then((data) => {
+          setArticleData(data.articles);
+          hideLoader();
+    });
+  }
   
   const digHandler = (title, id, link) => {
-
     return (event) => {
       console.log('I am fetching this link', title);
       showLoader();
@@ -100,10 +115,12 @@ export default function App() {
           console.log(data, typeof data);
           setArticleData(data.articles);
           setSubTitles(title);
+          setId(id);
           setTitleLink(link);
+          setReshuffle(true);
           hideLoader();
-        });
-      }
+      });
+    }
   }
 
 
@@ -122,7 +139,11 @@ export default function App() {
   //     show: true
   //   });
   // };
-
+  const reShuffleButton = () =>{
+    <Button variant="primary" size="lg" onClick={() => reDigHandler(titleId)} style={restartButton} className='restartButton'>
+      <h2 role="img" aria-label="reshuffle"></h2><strong>Box-Shuffle</strong>
+    </Button>
+  }
   const renderBox = (box, index) => {
     return(
       <InfoBox data={box} key={index} dig={digHandler}></InfoBox>
@@ -145,9 +166,16 @@ export default function App() {
           <Grid item xs={12} style={pageIntro}> 
             
             <Button variant="primary" size="lg" onClick={clickHandler} style={restartButton} className='restartButton'>
-            <h2 role="img" aria-label="shuffle"></h2><strong>Shuffle</strong>
+              <h2 role="img" aria-label="shuffle"></h2><strong>Shuffle</strong>
             </Button>
-            <br></br>
+            <br/><br/>
+            {reShuffle ? <Button variant="primary" size="lg" onClick={() => reDigHandler(titleId)} style={restartButton} className='restartButton'>
+                            <h2 role="img" aria-label="reshuffle"></h2><strong>Box-Shuffle</strong>
+                          </Button> : null}
+            {/* <Button variant="primary" size="lg" onClick={() => reDigHandler(titleId)} style={restartButton} className='restartButton'>
+              <h2 role="img" aria-label="reshuffle"></h2><strong>Box-Shuffle</strong>
+            </Button> */}
+            <br/>
             {/* <Button variant="primary" size="lg" onClick={aboutHandler} style={restartButton}>
             <h2 role="img" aria-label="about">🔀</h2><strong>About</strong>
             </Button> */}
@@ -234,8 +262,8 @@ const restartButton={
   height: '34px',
   cursor:'pointer',
 
-  background: '#074EE8',
-  borderRadius: '48px',
+  background: '#2565AE',
+  borderRadius: '5px',
   borderColor: 'transparent',
   color: '#fff',
   transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
