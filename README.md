@@ -5,11 +5,13 @@
   <h4 align="center"><a target="_blank" href="http://pickabox.space">Official Website: pickabox.space</a></h4>
 
   <p align="center">
-    Developed by HAcKeRs. Courtesy of SacHacks 2021.
+    Developed by HAKers. Courtesy of SacHacks 2021.
     <br>
     <br>
+    <ul style="list-style-type:none;">
   <li align="center"><a href="https://github.com/kristofgazso/pickabox.space/issues">Report Bug</a></li>
   <li align="center"><a href="https://github.com/kristofgazso/pickabox.space/issues">Request Feature</a></li>
+    </ul>
   </p>
 </p>
 
