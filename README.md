@@ -7,11 +7,12 @@
   <p align="center">
     Developed by HAKers. Courtesy of SacHacks 2021.
     <br>
+    <b>Winner of the 2nd Best Design with Code Award</b>
     <br>
-    <ul style="list-style-type:none;">
-  <li align="center"><a href="https://github.com/kristofgazso/pickabox.space/issues">Report Bug</a></li>
-  <li align="center"><a href="https://github.com/kristofgazso/pickabox.space/issues">Request Feature</a></li>
-    </ul>
+    <br>
+  <a href="https://github.com/kristofgazso/pickabox.space/issues">Report Bug</a>
+  <br>
+  <a href="https://github.com/kristofgazso/pickabox.space/issues">Request Feature</a>
   </p>
 </p>
 
