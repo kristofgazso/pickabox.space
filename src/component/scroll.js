@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import IconButton from '@material-ui/core/IconButton';
@@ -57,13 +58,17 @@ const Scroll = ({
     })
 
     return (
-        <div>
+        <>
             {show &&
-                <IconButton onClick={handleClick} className={classes.toTop} aria-label="to top" component="span">
+                <IconButton onClick={handleClick} className={classes.toTop, BackToTop} aria-label="to top" component="span">
                     <ExpandLessIcon />
                 </IconButton>
             }
-        </div>
+        </>
     )
+}
+
+const BackToTop = {
+    WebkitOverflowScrolling: 'touch'
 }
 export default Scroll;

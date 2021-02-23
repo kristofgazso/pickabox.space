@@ -1,8 +1,6 @@
-
-
 import React from 'react'
 
-function AboutModal () {
+function Instructions () {
 
         return (
             <>
@@ -19,10 +17,18 @@ function AboutModal () {
                 <br/><br/>
                 
                 Click "Read More" at any time. Let’s see how far the rabbithole goes.
-                <br/><br/></div>    
+                <br/><br/><br/>
+                
+                <strong>Beta Tester Opportunity:</strong> Leave some critical feedback <a href="https://forms.gle/Ye6PPeDCjBN4YVDz7" target="_blank"><strong>here</strong>!</a>
+                
+                <br/><br/>
+                
+            </div>    
+
+                
             </>
         )
 
 }
 
-export default AboutModal
+export default Instructions;
