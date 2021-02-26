@@ -69,7 +69,6 @@ const ModalWindow = {
     borderRadius: '5px',
     margin: 'auto'
 }
-
 const instructionButton = {
     display: 'flex',
     flexDirection: 'row',
