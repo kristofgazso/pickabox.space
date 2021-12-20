@@ -44,7 +44,7 @@ export default function App() {
     ref.current.continuousStart();
 
     // Using cors-anywhere proxy to scrape the data on wikipedia
-    fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space")
+    fetch("https://us-central1-pickabox-endpoint.cloudfunctions.net/test-2")
         .then((resp) => resp.json())
         .then((data) => {
             setReshuffle(false);
@@ -63,7 +63,7 @@ export default function App() {
   // Reshuffles but within the same article
   const reDigHandler = (id, title) =>{
     ref.current.continuousStart();
-    fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space?id=" + id)
+    fetch("https://us-central1-pickabox-endpoint.cloudfunctions.net/test-2?id=" + id)
         .then((resp) => resp.json())
         .then((data) => {
             ref.current.complete();
@@ -88,7 +88,7 @@ export default function App() {
           temp.unshift({id: id, title: title});
       }
 
-      fetch("https://blooming-river-52363.herokuapp.com/https://us-central1-sachacks-305315.cloudfunctions.net/pickabox-space?id=" + id)
+      fetch("https://us-central1-pickabox-endpoint.cloudfunctions.net/test-2?id=" + id)
         .then((resp) => resp.json())
         .then((data) => {
           ref.current.complete();
