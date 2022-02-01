@@ -5,11 +5,20 @@ import Grid from '@material-ui/core/Grid';
 
 import Instructions from './component/InstructionsComponent';
 import InfoBox from './component/InfoBox';
-import Scroll from './component/Scroll';
+import Scroll from './component/scroll';
 import TypeEffect from './component/TypeEffect';
 
 import logo from './image/boxIcon.svg';
 import './App.css';
+
+let CorsHeader = new Headers
+CorsHeader.append('Content-Type', 'application/json');
+CorsHeader.append('Accept', 'application/json');
+
+CorsHeader.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+CorsHeader.append('Access-Control-Allow-Credentials', 'true');
+
+CorsHeader.append('GET', 'POST', 'OPTIONS');
 
 export default function App() {
   
@@ -44,7 +53,7 @@ export default function App() {
     ref.current.continuousStart();
 
     // Using cors-anywhere proxy to scrape the data on wikipedia
-    fetch("https://us-central1-pickabox-endpoint.cloudfunctions.net/test-2")
+    fetch("https://morning-oasis-13370.herokuapp.com/https://asia-northeast2-pickabox-endpoint.cloudfunctions.net/jp-region")
         .then((resp) => resp.json())
         .then((data) => {
             setReshuffle(false);
@@ -63,7 +72,7 @@ export default function App() {
   // Reshuffles but within the same article
   const reDigHandler = (id, title) =>{
     ref.current.continuousStart();
-    fetch("https://us-central1-pickabox-endpoint.cloudfunctions.net/test-2?id=" + id)
+    fetch("https://morning-oasis-13370.herokuapp.com/https://asia-northeast2-pickabox-endpoint.cloudfunctions.net/jp-region?id="+id)
         .then((resp) => resp.json())
         .then((data) => {
             ref.current.complete();
@@ -88,7 +97,7 @@ export default function App() {
           temp.unshift({id: id, title: title});
       }
 
-      fetch("https://us-central1-pickabox-endpoint.cloudfunctions.net/test-2?id=" + id)
+      fetch("https://morning-oasis-13370.herokuapp.com/https://asia-northeast2-pickabox-endpoint.cloudfunctions.net/jp-region?id=" + id)
         .then((resp) => resp.json())
         .then((data) => {
           ref.current.complete();
@@ -267,7 +276,7 @@ const restartButtonInactive={
   width: '133px',
   height: '34px',
   cursor:'pointer',
-  background: '#B9ADAD',
+  background: '#97979c',
   borderRadius: '5px',
   borderColor: 'transparent',
   color: '#fff',
