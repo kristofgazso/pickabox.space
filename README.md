@@ -2,7 +2,9 @@
 <br />
 <p align="center">
   <h3 align="center">Pickabox, a wiki upon wikis</h3>
-  <h4 align="center"><a target="_blank" href="http://pickabox.space">Official Website: pickabox.space</a></h4>
+  <h4  align="center"><a  target="_blank"  href="http://gifted-shaw-8e8237.netlify.app">Official Website: pickabox.space</a></h4>
+
+  <h4  align="center">Main domain is currently NOT working, please visit our secondary site <br><a  target="_blank"  href="http://gifted-shaw-8e8237.netlify.app">gifted-shaw-8e8237.netlify.app</a></h4>
 
   <p align="center">
     Developed by HAKers. Courtesy of SacHacks 2021.
