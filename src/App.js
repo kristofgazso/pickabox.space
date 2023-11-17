@@ -15,7 +15,7 @@ let CorsHeader = new Headers
 CorsHeader.append('Content-Type', 'application/json');
 CorsHeader.append('Accept', 'application/json');
 
-CorsHeader.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+CorsHeader.append('Access-Control-Allow-Origin', '*');
 CorsHeader.append('Access-Control-Allow-Credentials', 'true');
 
 CorsHeader.append('GET', 'POST', 'OPTIONS');
@@ -39,7 +39,7 @@ export default function App() {
   // State showing whether reshuffle button exist or not
   const [reShuffle, setReshuffle] = useState(false);
 
-  //isShown hooks
+  // isShown hooks
   const [isShown, setIsShown] = useState(false);
 
   // Link Handler
@@ -53,7 +53,7 @@ export default function App() {
     ref.current.continuousStart();
 
     // Using cors-anywhere proxy to scrape the data on wikipedia
-    fetch("https://morning-oasis-13370.herokuapp.com/https://asia-northeast2-pickabox-endpoint.cloudfunctions.net/jp-region")
+    fetch("https://us-west1-pickabox.cloudfunctions.net/pickabox-space")
         .then((resp) => resp.json())
         .then((data) => {
             setReshuffle(false);
@@ -72,7 +72,7 @@ export default function App() {
   // Reshuffles but within the same article
   const reDigHandler = (id, title) =>{
     ref.current.continuousStart();
-    fetch("https://morning-oasis-13370.herokuapp.com/https://asia-northeast2-pickabox-endpoint.cloudfunctions.net/jp-region?id="+id)
+    fetch("https://us-west1-pickabox.cloudfunctions.net/pickabox-space?id="+id)
         .then((resp) => resp.json())
         .then((data) => {
             ref.current.complete();
@@ -97,7 +97,7 @@ export default function App() {
           temp.unshift({id: id, title: title});
       }
 
-      fetch("https://morning-oasis-13370.herokuapp.com/https://asia-northeast2-pickabox-endpoint.cloudfunctions.net/jp-region?id=" + id)
+      fetch("https://us-west1-pickabox.cloudfunctions.net/pickabox-space?id=" + id)
         .then((resp) => resp.json())
         .then((data) => {
           ref.current.complete();
