@@ -11,11 +11,11 @@ import TypeEffect from './component/TypeEffect';
 import logo from './image/boxIcon.svg';
 import './App.css';
 
-let CorsHeader = new Headers
+let CorsHeader = new Headers()
 CorsHeader.append('Content-Type', 'application/json');
 CorsHeader.append('Accept', 'application/json');
 
-CorsHeader.append('Access-Control-Allow-Origin', '*');
+CorsHeader.append('Access-Control-Allow-Origin', 'http://localost:3000');
 CorsHeader.append('Access-Control-Allow-Credentials', 'true');
 
 CorsHeader.append('GET', 'POST', 'OPTIONS');
@@ -53,13 +53,16 @@ export default function App() {
     ref.current.continuousStart();
 
     // Using cors-anywhere proxy to scrape the data on wikipedia
-    fetch("https://us-west1-pickabox.cloudfunctions.net/pickabox-space")
+    fetch("https://shielded-spire-49104-9bcb13268067.herokuapp.com/https://us-west1-pickabox.cloudfunctions.net/pickabox-space")
         .then((resp) => resp.json())
         .then((data) => {
             setReshuffle(false);
             setSubTitles('');
             setArticleData(data.articles);
             ref.current.complete();
+        })
+        .catch((err) => {
+          console.error(err);
         });
 };
 
@@ -72,13 +75,16 @@ export default function App() {
   // Reshuffles but within the same article
   const reDigHandler = (id, title) =>{
     ref.current.continuousStart();
-    fetch("https://us-west1-pickabox.cloudfunctions.net/pickabox-space?id="+id)
+    fetch("https://shielded-spire-49104-9bcb13268067.herokuapp.com/https://us-west1-pickabox.cloudfunctions.net/pickabox-space?id=" + id)
         .then((resp) => resp.json())
         .then((data) => {
             ref.current.complete();
             setSubTitles(title);
             setId(id);
-            setArticleData(data.articles);
+            setArticleData(data.articles)
+        .catch((err) => {
+          console.error(err);
+        })
     });
   }
 
@@ -97,7 +103,7 @@ export default function App() {
           temp.unshift({id: id, title: title});
       }
 
-      fetch("https://us-west1-pickabox.cloudfunctions.net/pickabox-space?id=" + id)
+      fetch("https://shielded-spire-49104-9bcb13268067.herokuapp.com/https://us-west1-pickabox.cloudfunctions.net/pickabox-space?id=" + id)
         .then((resp) => resp.json())
         .then((data) => {
           ref.current.complete();
@@ -106,7 +112,10 @@ export default function App() {
           setTitleLink(link);
           setArticleData(data.articles);
           setReshuffle(true);
-      });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
   }
 

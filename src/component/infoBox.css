@@ -9,7 +9,7 @@
   padding: 5px;
   width: 100;
   transition: all 0.5s;
-  cursor: pointer;
+  cursor: default; 
   margin: 5px;
 }
 
